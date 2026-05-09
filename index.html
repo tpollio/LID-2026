@@ -10,152 +10,433 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #080808;
+    :root {
+      --accent: #9FD235;
+      --accent-dim: rgba(159,210,53,0.12);
+      --accent-border: rgba(159,210,53,0.3);
+      --bg: #080808;
+      --muted: #666;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
       color: #fff;
       font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
-    .bg {
+    /* ── Background ── */
+    .bg-layer {
       position: fixed; inset: 0; z-index: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 60% 40%, rgba(159,210,53,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(159,210,53,0.04) 0%, transparent 60%),
-        #080808;
+        radial-gradient(ellipse 70% 60% at 75% 20%, rgba(159,210,53,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 5%  85%, rgba(159,210,53,0.04) 0%, transparent 60%),
+        var(--bg);
     }
-
-    .grid {
-      position: fixed; inset: 0; z-index: 0; opacity: 0.04;
-      background-image: linear-gradient(#fff 1px, transparent 1px),
-                        linear-gradient(90deg, #fff 1px, transparent 1px);
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; opacity: 0.035;
+      background-image:
+        linear-gradient(#fff 1px, transparent 1px),
+        linear-gradient(90deg, #fff 1px, transparent 1px);
       background-size: 80px 80px;
     }
 
-    .card {
-      position: relative; z-index: 1;
-      text-align: center;
-      max-width: 560px;
-      padding: 0 24px;
-      animation: fadeUp 1s ease both;
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,8,8,0.6);
+      backdrop-filter: blur(12px);
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .lid {
+    .topbar-left { display: flex; align-items: center; gap: 14px; }
+    .lid-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 15px; font-weight: 700;
-      color: #9FD235;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+      font-size: 20px; font-weight: 700; color: var(--accent);
+    }
+    .topbar-sep { width: 1px; height: 18px; background: var(--border); }
+    .topbar-name { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+    .topbar-right {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .topbar-right span { color: var(--accent); }
+
+    /* ── Main layout ── */
+    .stage {
+      position: relative; z-index: 1;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 48px;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .divider {
-      width: 40px; height: 1px;
-      background: rgba(159,210,53,0.4);
-      margin: 20px auto;
+    /* ── Left ── */
+    .left { padding-top: 20px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 40px; padding: 8px 18px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 32px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+    .dot-live {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.35; transform:scale(.65); }
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 6vw, 56px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      font-size: clamp(42px, 4.5vw, 64px);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .sub {
+      color: var(--muted); font-size: 16px; line-height: 1.75;
+      margin-bottom: 44px;
+      animation: fadeUp 0.8s ease 0.3s both;
     }
 
-    h1 em { font-style: italic; color: #9FD235; }
-
-    p {
-      color: #888;
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 40px;
+    /* ── Countdown ── */
+    .countdown {
+      display: flex; gap: 12px; margin-bottom: 44px;
+      animation: fadeUp 0.8s ease 0.4s both;
     }
-
-    .meta {
-      display: inline-flex; gap: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; overflow: hidden;
-      margin-bottom: 48px;
-    }
-
-    .meta-item {
-      padding: 14px 24px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-    .meta-item:last-child { border-right: none; }
-    .meta-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 3px; }
-    .meta-val   { font-size: 14px; font-weight: 600; }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(159,210,53,0.12);
-      border: 1px solid rgba(159,210,53,0.3);
-      border-radius: 40px;
-      padding: 10px 20px;
-      font-size: 12px; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: #9FD235;
-    }
-
-    .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #9FD235;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.7); }
-    }
-
-    .footer {
-      position: fixed; bottom: 28px; left: 0; right: 0;
+    .cd-block {
+      flex: 1; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 12px;
       text-align: center;
+      transition: border-color 0.3s;
+    }
+    .cd-block:hover { border-color: var(--accent-border); }
+    .cd-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px; font-weight: 700;
+      color: #fff; line-height: 1;
+      display: block; margin-bottom: 6px;
+    }
+    .cd-label {
+      font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .cd-sep {
+      display: flex; align-items: center; padding-top: 4px;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; color: var(--accent); opacity: 0.3;
+    }
+
+    /* ── Notify form ── */
+    .notify-form {
+      display: flex; gap: 10px;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+    .notify-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 40px; padding: 14px 22px;
+      color: #fff; font-family: 'Inter', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .notify-form input::placeholder { color: #444; }
+    .notify-form input:focus { border-color: var(--accent-border); }
+    .notify-form button {
+      background: var(--accent); color: #000;
+      border: none; border-radius: 40px; padding: 14px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .notify-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+    .notify-hint {
+      font-size: 12px; color: #444; margin-top: 10px;
+      animation: fadeUp 0.8s ease 0.6s both;
+    }
+
+    /* ── Right ── */
+    .right {
+      display: flex; flex-direction: column; gap: 16px;
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+
+    /* Event card */
+    .event-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 28px 20px;
+    }
+    .event-card-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    .event-meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+    }
+    .em-item .em-l { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .em-item .em-v { font-size: 15px; font-weight: 600; }
+    .event-divider { height: 1px; background: var(--border); margin: 16px 0; }
+    .session-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--accent-dim); border: 1px solid var(--accent-border);
+      border-radius: 10px; padding: 14px 16px; gap: 12px;
+    }
+    .session-info .session-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .session-info .session-sub { font-size: 12px; color: var(--muted); }
+    .session-time {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      background: var(--accent); color: #000;
+      padding: 5px 12px; border-radius: 20px; white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Speaker card */
+    .speaker-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px;
+      transition: border-color 0.3s;
+    }
+    .speaker-card:hover { border-color: var(--accent-border); }
+    .speaker-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a2a0a, #0d1505);
+      border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .speaker-details .sp-role {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 2px;
+    }
+    .speaker-details .sp-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; }
+    .speaker-details .sp-co  { font-size: 12px; color: var(--muted); }
+    .speaker-arrow { margin-left: auto; color: var(--accent); font-size: 18px; opacity: 0.5; }
+
+    /* Footer */
+    .footer {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 48px;
+      border-top: 1px solid var(--border);
+      background: rgba(8,8,8,0.6);
+      backdrop-filter: blur(12px);
       font-size: 12px; color: #444;
-      letter-spacing: 0.06em;
+    }
+    .footer a { color: #444; text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: var(--accent); }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .topbar { padding: 18px 24px; }
+      .stage {
+        grid-template-columns: 1fr;
+        overflow-y: auto; height: auto;
+        padding: 100px 24px 80px;
+        gap: 40px;
+      }
+      html, body { overflow: auto; }
+      .countdown { gap: 8px; }
+      .cd-num { font-size: 28px; }
+      .footer { padding: 14px 24px; flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="bg"></div>
-  <div class="grid"></div>
 
-  <div class="card">
-    <div class="lid">Deloitte Digital · Lugano</div>
-    <div class="divider"></div>
-    <h1>Something <em>exciting</em><br>is coming.</h1>
-    <p>We're getting ready for Lifestyle Innovation Day 2026.<br>See you at LAC Lugano on 18 May.</p>
-    <div class="meta">
-      <div class="meta-item">
-        <div class="meta-label">Date</div>
-        <div class="meta-val">18 May 2026</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Venue</div>
-        <div class="meta-val">LAC Lugano</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">Hours</div>
-        <div class="meta-val">08:00 – 18:00</div>
-      </div>
-    </div>
-    <br>
-    <div class="badge">
-      <span class="dot"></span>
-      Page launching soon
-    </div>
-  </div>
+  <div class="bg-layer"></div>
+  <div class="bg-grid"></div>
 
-  <div class="footer">lifestyleinnovationday.ch &nbsp;·&nbsp; deloitte.com/digital</div>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="lid-logo">LID</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-name">Deloitte Digital · Lugano</span>
+    </div>
+    <div class="topbar-right">5th Edition &nbsp;·&nbsp; <span>Official Partner</span></div>
+  </header>
+
+  <!-- Main -->
+  <main class="stage">
+
+    <!-- LEFT -->
+    <div class="left">
+      <div class="eyebrow">
+        <span class="dot-live"></span>
+        Launching 18 May 2026
+      </div>
+
+      <h1>
+        The future of <em>Digital,</em><br>
+        <em>Commerce</em> and<br>
+        <em>Innovation.</em>
+      </h1>
+
+      <p class="sub">
+        Deloitte Digital is proud to partner the 5th edition of
+        Lifestyle Innovation Day at LAC Lugano.
+        Our full experience goes live on the day of the event.
+      </p>
+
+      <!-- Countdown -->
+      <div class="countdown">
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">--</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hours">--</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-mins">--</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-secs">--</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <!-- Notify form -->
+      <div class="notify-form">
+        <input type="email" placeholder="Your business email" id="notify-email">
+        <button onclick="handleNotify()">Notify me</button>
+      </div>
+      <p class="notify-hint" id="notify-hint">Get notified when the page goes live — no spam, ever.</p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <!-- Event details card -->
+      <div class="event-card">
+        <div class="event-card-label">Event Details</div>
+        <div class="event-meta-grid">
+          <div class="em-item">
+            <div class="em-l">Date</div>
+            <div class="em-v">18 May 2026</div>
+          </div>
+          <div class="em-item">
+            <div class="em-l">Venue</div>
+            <div class="em-v">LAC Lugano</div>
+          </div>
+          <div class="em-item">
+            <div class="em-l">Hours</div>
+            <div class="em-v">08:00 – 18:00</div>
+          </div>
+          <div class="em-item">
+            <div class="em-l">Dress Code</div>
+            <div class="em-v">Elegant casual</div>
+          </div>
+        </div>
+        <div class="event-divider"></div>
+        <div class="session-row">
+          <div class="session-info">
+            <div class="session-title">Agentic Customer Journey</div>
+            <div class="session-sub">Hands-on session · Deloitte Digital</div>
+          </div>
+          <div class="session-time">14:20 · Sala Teatro</div>
+        </div>
+      </div>
+
+      <!-- Speaker card -->
+      <div class="speaker-card">
+        <div class="speaker-avatar">👤</div>
+        <div class="speaker-details">
+          <div class="sp-role">Featured Speaker</div>
+          <div class="sp-name">Giacomo Carozza</div>
+          <div class="sp-co">Deloitte Digital · Lugano</div>
+        </div>
+        <div class="speaker-arrow">→</div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>© 2026 Deloitte Digital</span>
+    <span>
+      <a href="https://lifestyleinnovationday.ch" target="_blank">lifestyleinnovationday.ch</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.deloitte.com/digital" target="_blank">deloitte.com/digital</a>
+    </span>
+  </footer>
+
+  <script>
+    // ── Countdown to 18 May 2026 08:00 Lugano (CEST = UTC+2 in May)
+    const EVENT_DATE = new Date('2026-05-18T08:00:00+02:00');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+      const diff = EVENT_DATE - new Date();
+      if (diff <= 0) {
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id =>
+          document.getElementById(id).textContent = '00');
+        return;
+      }
+      document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+      document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Notify form
+    function handleNotify() {
+      const input = document.getElementById('notify-email');
+      const hint  = document.getElementById('notify-hint');
+      const email = input.value.trim();
+      if (!email || !email.includes('@')) {
+        input.style.borderColor = 'rgba(255,80,80,0.5)';
+        setTimeout(() => input.style.borderColor = '', 1500);
+        return;
+      }
+      input.style.display = 'none';
+      document.querySelector('.notify-form button').style.display = 'none';
+      hint.style.color    = 'var(--accent)';
+      hint.textContent    = "✓ Got it — we'll let you know when the page is live.";
+    }
+
+    document.getElementById('notify-email')
+      .addEventListener('keydown', e => { if (e.key === 'Enter') handleNotify(); });
+  </script>
+
 </body>
 </html>
