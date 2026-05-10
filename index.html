@@ -1283,37 +1283,44 @@
 ══════════════════════════════════ -->
 <section id="contact" class="full-bleed">
   <div class="inner">
-    <div class="label label-pill" style="margin-bottom:24px;">Let's connect</div>
-    <h2>Start the conversation <em>today.</em></h2>
-    <p>Whether you want to explore a specific challenge, continue the discussion after our session, or simply stay in touch — we'd love to hear from you.</p>
-    <div class="contact-form reveal">
+    <div class="label label-pill" style="margin-bottom:24px;">Book an appointment</div>
+    <h2>Meet us at <em>LID 2026.</em></h2>
+    <p>Reserve a 1:1 slot with our Ticino team during the event. We'll follow up to confirm your preferred time.</p>
+
+    <form class="contact-form reveal" name="book-appointment" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field" id="booking-form">
+
+      <!-- Netlify required fields -->
+      <input type="hidden" name="form-name" value="book-appointment">
+      <p style="display:none;"><input name="bot-field"></p>
+
       <div class="form-row">
         <div class="form-group">
-          <label>First name</label>
-          <input type="text" placeholder="Marco">
+          <label for="first-name">First name *</label>
+          <input type="text" id="first-name" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label>Last name</label>
-          <input type="text" placeholder="Rossi">
+          <label for="last-name">Last name *</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company</label>
-          <input type="text" placeholder="Your company">
+          <label for="company">Company *</label>
+          <input type="text" id="company" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label>Role</label>
-          <input type="text" placeholder="CEO / CMO / CDO…">
+          <label for="role">Role</label>
+          <input type="text" id="role" name="role" placeholder="CEO / CMO / CDO…">
         </div>
       </div>
       <div class="form-group">
-        <label>Business email</label>
-        <input type="email" placeholder="marco.rossi@company.com">
+        <label for="email">Business email *</label>
+        <input type="email" id="email" name="email" placeholder="marco.rossi@company.com" required>
       </div>
       <div class="form-group">
-        <label>I'm most interested in</label>
-        <select>
+        <label for="topic">I'm most interested in</label>
+        <select id="topic" name="topic">
           <option value="">Select a topic</option>
           <option>Agentic AI & Customer Journey</option>
           <option>Commerce Platform & Re-platforming</option>
@@ -1326,10 +1333,21 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Message (optional)</label>
-        <textarea placeholder="Tell us about your challenge or simply say hello…"></textarea>
+        <label for="message">Message (optional)</label>
+        <textarea id="message" name="message" placeholder="Tell us about your challenge or simply say hello…"></textarea>
       </div>
-      <button class="form-submit" onclick="handleSubmit(event)">Send message →</button>
+      <button type="submit" class="form-submit">Book my appointment →</button>
+    </form>
+
+    <!-- Success state (hidden by default) -->
+    <div id="form-success" style="display:none; text-align:center; padding:60px 40px;">
+      <div style="font-size:48px; margin-bottom:20px;">✓</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:28px; margin-bottom:12px;">
+        We'll be in touch <em style="color:var(--accent)">shortly.</em>
+      </h3>
+      <p style="color:var(--muted); font-size:15px; line-height:1.7;">
+        Thanks for reaching out. One of our Ticino team members<br>will confirm your appointment within 24 hours.
+      </p>
     </div>
   </div>
 </section>
@@ -1399,15 +1417,31 @@
   // Pin the agentic layer node as always active
   nodes[1] && (nodes[1].dataset.pinned = 'true');
 
-  // ── Form submit (placeholder — wire to your backend)
-  function handleSubmit(e) {
+  // ── Netlify Forms submit (AJAX — no page redirect)
+  const form    = document.getElementById('booking-form');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = e.target;
-    btn.textContent = '✓ Message sent — we\'ll be in touch!';
-    btn.style.background = '#2a4a0a';
-    btn.style.color = 'var(--accent)';
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
     btn.disabled = true;
-  }
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      form.style.display    = 'none';
+      success.style.display = 'block';
+    } catch (err) {
+      btn.textContent = 'Something went wrong — please try again';
+      btn.style.background = 'rgba(255,80,80,0.15)';
+      btn.style.color = '#ff6060';
+      btn.disabled = false;
+    }
+  });
 
   // ── Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
