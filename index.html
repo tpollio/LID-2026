@@ -474,12 +474,13 @@
     .team-photo {
       width: 100%; aspect-ratio: 3/4; background: var(--bg-card2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 48px; color: var(--accent); opacity: 0.2;
+      font-size: 48px; color: var(--accent);
       position: relative; overflow: hidden;
     }
+    .team-photo .placeholder { opacity: 0.2; }
     .team-photo img {
       width: 100%; height: 100%; object-fit: cover; object-position: top;
-      opacity: 1; display: block;
+      display: block;
     }
     .team-photo::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
@@ -1136,7 +1137,7 @@
       </div>
     </div>
     <div class="team-card reveal reveal-delay-2">
-      <div class="team-photo">👤</div>
+      <div class="team-photo"><span class="placeholder">👤</span></div>
       <div class="team-info">
         <div class="team-role">Director</div>
         <div class="team-name">[Director Name]</div>
@@ -1144,7 +1145,7 @@
       </div>
     </div>
     <div class="team-card reveal reveal-delay-3">
-      <div class="team-photo">👤</div>
+      <div class="team-photo"><span class="placeholder">👤</span></div>
       <div class="team-info">
         <div class="team-role">Senior Manager</div>
         <div class="team-name">[Senior Manager 1]</div>
@@ -1152,7 +1153,7 @@
       </div>
     </div>
     <div class="team-card reveal reveal-delay-4">
-      <div class="team-photo">👤</div>
+      <div class="team-photo"><span class="placeholder">👤</span></div>
       <div class="team-info">
         <div class="team-role">Senior Manager</div>
         <div class="team-name">[Senior Manager 2]</div>
@@ -1160,7 +1161,7 @@
       </div>
     </div>
     <div class="team-card reveal" style="transition-delay:0.5s;">
-      <div class="team-photo">👤</div>
+      <div class="team-photo"><span class="placeholder">👤</span></div>
       <div class="team-info">
         <div class="team-role">Senior Manager</div>
         <div class="team-name">[Senior Manager 3]</div>
