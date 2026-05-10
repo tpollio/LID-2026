@@ -477,6 +477,10 @@
       font-size: 48px; color: var(--accent); opacity: 0.2;
       position: relative; overflow: hidden;
     }
+    .team-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      opacity: 1; display: block;
+    }
     .team-photo::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
       background: linear-gradient(to top, var(--bg-card), transparent);
@@ -1122,10 +1126,12 @@
   <div class="team-grid">
     <!-- ⚠️ Replace names, titles, and specialisations with actual team info -->
     <div class="team-card reveal reveal-delay-1">
-      <div class="team-photo">👤</div>
+      <div class="team-photo">
+        <img src="alessio-ruffini.jpg" alt="Alessio Ruffini">
+      </div>
       <div class="team-info">
         <div class="team-role">Partner</div>
-        <div class="team-name">[Partner Name]</div>
+        <div class="team-name">Alessio Ruffini</div>
         <div class="team-focus">Digital Strategy · Commerce · Business Development</div>
       </div>
     </div>
