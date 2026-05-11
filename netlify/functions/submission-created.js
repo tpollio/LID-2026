@@ -2,6 +2,7 @@
  * Netlify Function — submission-created
  * Fires automatically on every Netlify Forms submission.
  * Sends a reply email with a download link for the two document forms.
+ * v4 — uses SITE_URL env var (set per context in Netlify dashboard)
  */
 
 const RESEND_API = 'https://api.resend.com/emails';
