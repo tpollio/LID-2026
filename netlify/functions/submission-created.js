@@ -41,9 +41,11 @@ exports.handler = async (event) => {
     const toEmail     = payload.data?.['email']       || payload.email;
     const fromAddress = process.env.RESEND_FROM || 'onboarding@resend.dev';
 
-    // DEPLOY_URL is injected by Netlify — correct for both staging and production
-    const baseUrl     = (process.env.DEPLOY_URL || '').replace(/\/$/, '');
+    // DEPLOY_PRIME_URL = branch-specific URL (e.g. staging--lid-2026.netlify.app)
+    // URL = primary site URL — always set, good fallback
+    const baseUrl     = (process.env.DEPLOY_PRIME_URL || process.env.URL || '').replace(/\/$/, '');
     const downloadUrl = `${baseUrl}/downloads/${doc.filename}`;
+    console.log('Download URL:', downloadUrl);
 
     const res = await fetch(RESEND_API, {
       method: 'POST',
