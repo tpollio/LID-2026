@@ -615,6 +615,103 @@
     .form-submit:hover { opacity: 0.85; transform: translateY(-2px); }
 
     /* ══════════════════════════════════
+       SECTION 13 — CONNECT / CTA OVERVIEW
+    ══════════════════════════════════ */
+    #connect {
+      border-top: 1px solid var(--border);
+    }
+    .cta-overview-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 0;
+    }
+    a.cta-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 12px;
+      text-decoration: none; color: var(--white);
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    a.cta-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.4s;
+    }
+    a.cta-card:hover { border-color: var(--border-acc); background: var(--bg-card2); transform: translateY(-4px); }
+    a.cta-card:hover::before { transform: scaleX(1); }
+    a.cta-card h3 { font-size: 22px; margin: 0; }
+    a.cta-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 0; flex: 1; }
+
+    /* Pills — base */
+    .cta-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 40px;
+      border: 1.5px solid var(--accent); color: var(--accent);
+      width: fit-content;
+    }
+    /* Download pill — outline green */
+    .cta-pill--download {
+      background: transparent;
+    }
+    /* Meet pill — solid green */
+    .cta-pill--meet {
+      background: var(--accent); color: #000;
+      border-color: var(--accent);
+    }
+
+    /* CTA card buttons */
+    .cta-btn {
+      display: inline-block; margin-top: 4px;
+      font-size: 13px; font-weight: 600; color: var(--accent);
+      padding: 10px 0; letter-spacing: 0.02em;
+    }
+    .cta-btn--solid {
+      background: var(--accent); color: #000;
+      padding: 10px 22px; border-radius: 40px;
+      font-size: 13px; font-weight: 700;
+    }
+
+    /* ══════════════════════════════════
+       CTA LANDING SECTIONS (QR anchors)
+    ══════════════════════════════════ */
+    .cta-landing {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 48px;
+    }
+    .cta-landing-inner {
+      max-width: 640px; margin: 0 auto;
+    }
+    .cta-landing-inner h2 { font-size: clamp(34px, 4vw, 52px); margin-bottom: 16px; }
+    .cta-landing-inner > p {
+      color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 40px;
+    }
+    .cta-form {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px;
+    }
+    .cta-success {
+      text-align: center; padding: 60px 32px;
+    }
+    .success-check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--accent); color: #000;
+      font-size: 28px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .cta-success h3 { font-size: 28px; margin-bottom: 12px; }
+    .cta-success p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+    /* responsive CTA */
+    @media (max-width: 900px) {
+      .cta-overview-grid { grid-template-columns: 1fr !important; }
+      .cta-landing { padding: 72px 24px; }
+      .cta-form { padding: 28px 20px; }
+    }
+
+    /* ══════════════════════════════════
        FOOTER
     ══════════════════════════════════ */
     footer {
@@ -678,7 +775,7 @@
     <span class="nav-divider"></span>
     <img src="deloittedigital-logo-white.png" alt="Deloitte Digital" style="height:22px; width:auto; display:block;">
   </div>
-  <a href="#contact" class="nav-cta">Let's connect</a>
+  <a href="#connect" class="nav-cta">Let's connect</a>
 </nav>
 
 <!-- ══════════════════════════════════
@@ -726,7 +823,7 @@
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a meeting with us</a>
+      <a href="#connect" class="btn-primary">Book a meeting with us</a>
       <a href="#speaker" class="btn-secondary">Meet our speaker</a>
     </div>
   </div>
@@ -1320,48 +1417,166 @@
 </section>
 
 <!-- ══════════════════════════════════
-     SECTION 13 — CONTACT / CTA
+     SECTION 13 — 4 CTA OVERVIEW
 ══════════════════════════════════ -->
-<section id="contact" class="full-bleed">
-  <div class="inner">
-    <div class="label label-pill" style="margin-bottom:24px;">Book an appointment</div>
-    <h2>Meet us at <em>LID 2026.</em></h2>
-    <p>Reserve a 1:1 slot with our Ticino team during the event. We'll follow up to confirm your preferred time.</p>
+<section id="connect">
+  <div class="section-head reveal">
+    <div class="label">Connect with us</div>
+    <h2>Four ways to <em>get started.</em></h2>
+    <p>Download our resources or book a 1:1 meeting with our teams — scan the QR code at our stand or click below.</p>
+  </div>
+  <div class="cta-overview-grid reveal">
 
-    <form class="contact-form reveal" name="book-appointment" method="POST"
-          data-netlify="true" netlify-honeypot="bot-field" id="booking-form">
+    <a href="#download-ai" class="cta-card">
+      <div class="cta-pill cta-pill--download">📄 Download</div>
+      <h3>The Agentic AI Report</h3>
+      <p>How agentic AI is reshaping the end-to-end customer journey — with real use cases and business impact data.</p>
+      <span class="cta-btn">Get the report →</span>
+    </a>
 
-      <!-- Netlify required fields -->
-      <input type="hidden" name="form-name" value="book-appointment">
-      <p style="display:none;"><input name="bot-field"></p>
+    <a href="#download-guide" class="cta-card">
+      <div class="cta-pill cta-pill--download">📄 Download</div>
+      <h3>The Commerce Guide</h3>
+      <p>A practical guide to composable commerce — platform decisions, architecture patterns and roadmap frameworks.</p>
+      <span class="cta-btn">Get the guide →</span>
+    </a>
 
+    <a href="#meet-ticino" class="cta-card">
+      <div class="cta-pill cta-pill--meet">🤝 Book</div>
+      <h3>Meet Team Ticino</h3>
+      <p>Book a 1:1 slot with our Lugano team during the event. 20 minutes, your agenda, no obligation.</p>
+      <span class="cta-btn cta-btn--solid">Book a meeting →</span>
+    </a>
+
+    <a href="#meet-italy" class="cta-card">
+      <div class="cta-pill cta-pill--meet">🤝 Book</div>
+      <h3>Meet Team Italy</h3>
+      <p>Connect with our Italian team for a focused conversation on your specific business challenge.</p>
+      <span class="cta-btn cta-btn--solid">Book a meeting →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ANCHOR: DOWNLOAD AI REPORT
+══════════════════════════════════ -->
+<section id="download-ai" class="cta-landing full-bleed">
+  <div class="cta-landing-inner">
+    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;">📄 Download · AI Report</div>
+    <h2>The Agentic AI <em>Report.</em></h2>
+    <p>Leave your details and we'll send you the report directly — plus a follow-up from our team if you'd like to explore further.</p>
+    <form class="cta-form" id="form-dl-ai" name="download-ai-report" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field-dlai">
+      <input type="hidden" name="form-name" value="download-ai-report">
+      <p style="display:none;"><input name="bot-field-dlai"></p>
       <div class="form-row">
         <div class="form-group">
-          <label for="first-name">First name *</label>
-          <input type="text" id="first-name" name="first-name" placeholder="Marco" required>
+          <label>First name *</label>
+          <input type="text" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label for="last-name">Last name *</label>
-          <input type="text" id="last-name" name="last-name" placeholder="Rossi" required>
+          <label>Last name *</label>
+          <input type="text" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="company">Company *</label>
-          <input type="text" id="company" name="company" placeholder="Your company" required>
+          <label>Company *</label>
+          <input type="text" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label for="role">Role</label>
-          <input type="text" id="role" name="role" placeholder="CEO / CMO / CDO…">
+          <label>Business email *</label>
+          <input type="email" name="email" placeholder="marco.rossi@company.com" required>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Send me the report →</button>
+    </form>
+    <div class="cta-success" id="success-dl-ai" style="display:none;">
+      <div class="success-check">✓</div>
+      <h3>Report on its way <em>to your inbox.</em></h3>
+      <p>Check your email — we'll also be in touch to see if we can help further.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ANCHOR: DOWNLOAD COMMERCE GUIDE
+══════════════════════════════════ -->
+<section id="download-guide" class="cta-landing full-bleed">
+  <div class="cta-landing-inner">
+    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;">📄 Download · Commerce Guide</div>
+    <h2>The Commerce <em>Guide.</em></h2>
+    <p>Leave your details and we'll send you the guide directly — plus a follow-up from our team if you'd like to explore further.</p>
+    <form class="cta-form" id="form-dl-guide" name="download-commerce-guide" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field-dlguide">
+      <input type="hidden" name="form-name" value="download-commerce-guide">
+      <p style="display:none;"><input name="bot-field-dlguide"></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name *</label>
+          <input type="text" name="first-name" placeholder="Marco" required>
+        </div>
+        <div class="form-group">
+          <label>Last name *</label>
+          <input type="text" name="last-name" placeholder="Rossi" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company *</label>
+          <input type="text" name="company" placeholder="Your company" required>
+        </div>
+        <div class="form-group">
+          <label>Business email *</label>
+          <input type="email" name="email" placeholder="marco.rossi@company.com" required>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Send me the guide →</button>
+    </form>
+    <div class="cta-success" id="success-dl-guide" style="display:none;">
+      <div class="success-check">✓</div>
+      <h3>Guide on its way <em>to your inbox.</em></h3>
+      <p>Check your email — we'll also be in touch to see if we can help further.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     ANCHOR: MEET TEAM TICINO
+══════════════════════════════════ -->
+<section id="meet-ticino" class="cta-landing full-bleed">
+  <div class="cta-landing-inner">
+    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;">🤝 Book · Team Ticino</div>
+    <h2>Meet our <em>Ticino team.</em></h2>
+    <p>Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
+    <form class="cta-form" id="form-meet-ticino" name="meet-team-ticino" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field-ticino">
+      <input type="hidden" name="form-name" value="meet-team-ticino">
+      <p style="display:none;"><input name="bot-field-ticino"></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name *</label>
+          <input type="text" name="first-name" placeholder="Marco" required>
+        </div>
+        <div class="form-group">
+          <label>Last name *</label>
+          <input type="text" name="last-name" placeholder="Rossi" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company *</label>
+          <input type="text" name="company" placeholder="Your company" required>
+        </div>
+        <div class="form-group">
+          <label>Business email *</label>
+          <input type="email" name="email" placeholder="marco.rossi@company.com" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="email">Business email *</label>
-        <input type="email" id="email" name="email" placeholder="marco.rossi@company.com" required>
-      </div>
-      <div class="form-group">
-        <label for="topic">I'm most interested in</label>
-        <select id="topic" name="topic">
+        <label>Topic</label>
+        <select name="topic">
           <option value="">Select a topic</option>
           <option>Agentic AI & Customer Journey</option>
           <option>Commerce Platform & Re-platforming</option>
@@ -1373,22 +1588,68 @@
           <option>Other</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="message">Message (optional)</label>
-        <textarea id="message" name="message" placeholder="Tell us about your challenge or simply say hello…"></textarea>
-      </div>
-      <button type="submit" class="form-submit">Book my appointment →</button>
+      <button type="submit" class="form-submit">Book with Team Ticino →</button>
     </form>
+    <div class="cta-success" id="success-meet-ticino" style="display:none;">
+      <div class="success-check">✓</div>
+      <h3>We'll be in touch <em>shortly.</em></h3>
+      <p>Our Ticino team will confirm your slot within a few hours.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Success state (hidden by default) -->
-    <div id="form-success" style="display:none; text-align:center; padding:60px 40px;">
-      <div style="font-size:48px; margin-bottom:20px;">✓</div>
-      <h3 style="font-family:'Playfair Display',serif; font-size:28px; margin-bottom:12px;">
-        We'll be in touch <em style="color:var(--accent)">shortly.</em>
-      </h3>
-      <p style="color:var(--muted); font-size:15px; line-height:1.7;">
-        Thanks for reaching out. One of our Ticino team members<br>will confirm your appointment within 24 hours.
-      </p>
+<!-- ══════════════════════════════════
+     ANCHOR: MEET TEAM ITALY
+══════════════════════════════════ -->
+<section id="meet-italy" class="cta-landing full-bleed">
+  <div class="cta-landing-inner">
+    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;">🤝 Book · Team Italy</div>
+    <h2>Meet our <em>Italian team.</em></h2>
+    <p>Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
+    <form class="cta-form" id="form-meet-italy" name="meet-team-italy" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field-italy">
+      <input type="hidden" name="form-name" value="meet-team-italy">
+      <p style="display:none;"><input name="bot-field-italy"></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name *</label>
+          <input type="text" name="first-name" placeholder="Marco" required>
+        </div>
+        <div class="form-group">
+          <label>Last name *</label>
+          <input type="text" name="last-name" placeholder="Rossi" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Company *</label>
+          <input type="text" name="company" placeholder="Your company" required>
+        </div>
+        <div class="form-group">
+          <label>Business email *</label>
+          <input type="email" name="email" placeholder="marco.rossi@company.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Topic</label>
+        <select name="topic">
+          <option value="">Select a topic</option>
+          <option>Agentic AI & Customer Journey</option>
+          <option>Commerce Platform & Re-platforming</option>
+          <option>AI Personalisation & Data</option>
+          <option>Digital Strategy & Innovation</option>
+          <option>Customer Experience Design</option>
+          <option>Fashion & Luxury Digital</option>
+          <option>Industrial & B2B Commerce</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">Book with Team Italy →</button>
+    </form>
+    <div class="cta-success" id="success-meet-italy" style="display:none;">
+      <div class="success-check">✓</div>
+      <h3>We'll be in touch <em>shortly.</em></h3>
+      <p>Our Italian team will confirm your slot within a few hours.</p>
     </div>
   </div>
 </section>
@@ -1459,30 +1720,38 @@
   nodes[1] && (nodes[1].dataset.pinned = 'true');
 
   // ── Netlify Forms submit (AJAX — no page redirect)
-  const form    = document.getElementById('booking-form');
-  const success = document.getElementById('form-success');
+  function wireForm(formId, successId) {
+    const form    = document.getElementById(formId);
+    const success = document.getElementById(successId);
+    if (!form || !success) return;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
 
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      });
-      form.style.display    = 'none';
-      success.style.display = 'block';
-    } catch (err) {
-      btn.textContent = 'Something went wrong — please try again';
-      btn.style.background = 'rgba(255,80,80,0.15)';
-      btn.style.color = '#ff6060';
-      btn.disabled = false;
-    }
-  });
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        });
+        form.style.display    = 'none';
+        success.style.display = 'block';
+      } catch (err) {
+        btn.textContent = 'Something went wrong — please try again';
+        btn.style.background = 'rgba(255,80,80,0.15)';
+        btn.style.color = '#ff6060';
+        btn.disabled = false;
+      }
+    });
+  }
+
+  wireForm('form-dl-ai',       'success-dl-ai');
+  wireForm('form-dl-guide',    'success-dl-guide');
+  wireForm('form-meet-ticino', 'success-meet-ticino');
+  wireForm('form-meet-italy',  'success-meet-italy');
 
   // ── Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
