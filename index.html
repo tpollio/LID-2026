@@ -465,6 +465,10 @@
     #team .team-grid {
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 56px;
     }
+    #team-italy .team-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px;
+      max-width: 690px; /* keeps cards same width as 5-col Swiss grid */
+    }
     .team-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
@@ -1179,7 +1183,7 @@
     <h2>The people <em>behind the work.</em></h2>
     <p>Our Italian team, bringing the same expertise and commitment to clients across the border.</p>
   </div>
-  <div class="team-grid" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="team-grid">
     <div class="team-card reveal reveal-delay-1">
       <div class="team-photo"><span class="placeholder">👤</span></div>
       <div class="team-info">
