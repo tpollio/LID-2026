@@ -6,6 +6,7 @@
   <title>LID 2026 · QR Code · Deloitte Digital</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="content.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -173,41 +174,25 @@
   <div class="qr-body">
     <div class="qr-code-wrap" id="qr-container"></div>
     <div class="qr-cta">
-      <div class="qr-cta-label" data-i18n="badge.label"></div>
-      <div class="qr-cta-title" data-i18n="badge.title"></div>
-      <div class="qr-cta-desc" data-i18n="badge.desc"></div>
+      <div class="qr-cta-label" data-i18n="qr.label"></div>
+      <div class="qr-cta-title" data-i18n="qr.title"></div>
+      <div class="qr-cta-desc" data-i18n="qr.desc"></div>
     </div>
   </div>
 
   <div class="qr-card-bottom">
-    <div class="qr-event" data-i18n="badge.event"></div>
+    <div class="qr-event" data-i18n="qr.event"></div>
     <div class="qr-url" id="qr-url-label"></div>
   </div>
 
 </div>
 
 <script>
-  /* ── CONTENT ── */
-  const CONTENT = {
-    en: {
-      'badge.label': 'Scan to connect',
-      'badge.title': 'Download reports &<br>book a meeting',
-      'badge.desc':  'Access our AI Report, Commerce Guide<br>or book a 1:1 with our teams',
-      'badge.event': '<strong>18 May 2026</strong> · LAC Lugano',
-    },
-    it: {
-      'badge.label': 'Scansiona per connetterti',
-      'badge.title': 'Scarica i report &<br>prenota un incontro',
-      'badge.desc':  'Accedi al nostro AI Report, Commerce Guide<br>o prenota un 1:1 con il nostro team',
-      'badge.event': '<strong>18 maggio 2026</strong> · LAC Lugano',
-    }
-  };
-
   /* ── LANGUAGE ── */
   let currentLang = localStorage.getItem('lid-qr-lang') || 'en';
 
   function applyLanguage(lang) {
-    const C = CONTENT[lang];
+    const C = window.CONTENT[lang];
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const v = C[el.dataset.i18n];
       if (v !== undefined) el.innerHTML = v;

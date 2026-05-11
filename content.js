@@ -204,6 +204,12 @@ window.CONTENT = {
     // ── FOOTER
     'footer.left':  "<span>Deloitte Digital · Lugano</span> — Lifestyle Innovation Day 2026 · 18 May · LAC Lugano",
     'footer.right': "lifestyleinnovationday.ch",
+
+    // ── QR CODE CARD
+    'qr.label': "Scan to connect",
+    'qr.title': "Download reports &<br>book a meeting",
+    'qr.desc':  "Access our AI Report, Commerce Guide<br>or book a 1:1 with our teams",
+    'qr.event': "<strong>18 May 2026</strong> · LAC Lugano",
   },
 
 
@@ -404,6 +410,12 @@ window.CONTENT = {
     // ── FOOTER
     'footer.left':  "<span>Deloitte Digital · Lugano</span> — Lifestyle Innovation Day 2026 · 18 Maggio · LAC Lugano",
     'footer.right': "lifestyleinnovationday.ch",
+
+    // ── QR CODE CARD
+    'qr.label': "Scansiona per connetterti",
+    'qr.title': "Scarica i report &<br>prenota un incontro",
+    'qr.desc':  "Accedi al nostro AI Report, Commerce Guide<br>o prenota un 1:1 con il nostro team",
+    'qr.event': "<strong>18 maggio 2026</strong> · LAC Lugano",
   },
 
 }; // end window.CONTENT
