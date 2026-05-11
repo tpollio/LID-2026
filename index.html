@@ -757,18 +757,19 @@
     .lang-sep { color: var(--border); font-size: 11px; user-select: none; }
 
     /* ══════════════════════════════════
-       RESPONSIVE (basic)
+       RESPONSIVE — tablet (≤900px)
     ══════════════════════════════════ */
     @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      #hero { padding: 0 24px 64px; }
-      .hero-top { padding: 20px 24px; }
-      section { padding: 72px 24px; }
+      nav { padding: 14px 20px; }
+      nav.scrolled { padding: 10px 20px; }
+      #hero { padding: 0 20px 56px; }
+      .hero-top { padding: 16px 20px; }
+      section { padding: 64px 20px; }
       #event-snapshot .snapshot-grid { grid-template-columns: 1fr; }
-      .agentic-grid { grid-template-columns: 1fr; gap: 48px; }
+      .agentic-grid { grid-template-columns: 1fr; gap: 40px; }
       #speaker .speaker-card { grid-template-columns: 1fr; }
-      .speaker-photo-wrap { padding: 40px 24px 0; height: 240px; align-items: center; }
-      .speaker-info { padding: 36px 28px; }
+      .speaker-photo-wrap { padding: 36px 24px 0; height: 220px; align-items: center; }
+      .speaker-info { padding: 32px 24px; }
       .talk-pillars { grid-template-columns: 1fr !important; }
       .services-grid { grid-template-columns: 1fr 1fr !important; }
       .impact-grid { grid-template-columns: 1fr 1fr !important; }
@@ -778,6 +779,48 @@
       .stand-grid { grid-template-columns: 1fr !important; }
       .form-row { grid-template-columns: 1fr !important; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
+      .hero-event-meta { flex-wrap: wrap; }
+      .hero-meta-item { flex: 1 1 calc(50% - 1px); }
+      .hero-meta-item:first-child { border-radius: var(--radius) 0 0 0; }
+      .hero-meta-item:nth-child(2) { border-radius: 0 var(--radius) 0 0; }
+      .hero-meta-item:nth-child(3) { border-radius: 0 0 0 var(--radius); }
+      .hero-meta-item:last-child  { border-radius: 0 0 var(--radius) 0; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+    }
+
+    /* ══════════════════════════════════
+       RESPONSIVE — mobile (≤480px)
+    ══════════════════════════════════ */
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(34px, 9vw, 48px); }
+      h2 { font-size: clamp(26px, 7vw, 40px); }
+      nav { padding: 12px 16px; }
+      .nav-cta { display: none; }          /* CTA nel hero, non serve nel nav */
+      #hero { padding: 0 16px 48px; }
+      .hero-top { padding: 14px 16px; }
+      .hero-top-partner span { display: none; } /* nasconde "Official Partner" */
+      section { padding: 52px 16px; }
+      .section-head { margin-bottom: 40px; }
+      .hero-sub { font-size: 15px; }
+      .hero-event-meta { margin-top: 28px; }
+      .hero-meta-item { padding: 12px 16px; }
+      .hero-meta-item .meta-val { font-size: 13px; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      #team .team-grid { grid-template-columns: 1fr 1fr !important; }
+      #team-italy .team-grid { grid-template-columns: 1fr 1fr !important; max-width: 100%; }
+      .impact-grid { grid-template-columns: 1fr 1fr !important; }
+      .cta-overview-grid { gap: 12px; }
+      a.cta-card { padding: 24px 20px; }
+      .cta-form { padding: 24px 16px; }
+      .contact-form { padding: 28px 16px; }
+      footer { padding: 24px 16px; }
+      .cta-landing { padding: 52px 16px; }
+      #agentic-idea { padding: 64px 16px; }
+      #services { padding: 64px 16px; }
+      #why-dd { padding: 64px 16px; }
+      .why-item { padding: 28px 20px; }
+      .service-item { padding: 28px 20px; }
     }
   </style>
 </head>
@@ -786,8 +829,6 @@
 <!-- ── NAV ── -->
 <nav id="main-nav">
   <div class="nav-logo">
-    <span class="nav-lid">LID</span>
-    <span class="nav-divider"></span>
     <img src="deloittedigital-logo-white.png" alt="Deloitte Digital" style="height:22px; width:auto; display:block;">
   </div>
   <div style="display:flex;align-items:center;gap:20px;">
@@ -807,10 +848,7 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-top">
-    <div>
-      <div class="hero-top-lid">LID</div>
-      <div class="hero-top-info" data-i18n="hero.edition">Lifestyle Innovation Day 2026 · 5th Edition</div>
-    </div>
+    <div class="hero-top-info" data-i18n="hero.edition">Lifestyle Innovation Day 2026 · 5th Edition</div>
     <div class="hero-top-partner">
       <img src="deloittedigital-logo-white.png" alt="Deloitte Digital" style="height:20px; width:auto; display:block; margin-bottom:4px;">
       <span data-i18n="hero.partner">Official Partner</span>
