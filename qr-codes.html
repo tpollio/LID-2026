@@ -159,8 +159,8 @@
   <div class="toolbar-group">
     <label>Base URL</label>
     <input type="url" id="base-url"
-           placeholder="https://staging--lid-2026.netlify.app"
-           value="">
+           placeholder="https://staging--lid.2026.netlify.app"
+           value="https://staging--lid.2026.netlify.app">
     <span class="toolbar-hint">Paste your staging or production URL — QR codes update live</span>
   </div>
   <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
@@ -261,8 +261,8 @@
     });
   }
 
-  // Build on load with empty base (shows placeholder)
-  buildQRCodes('');
+  // Build on load with default URL
+  buildQRCodes(input.value);
 
   // Rebuild whenever URL changes
   const input = document.getElementById('base-url');
