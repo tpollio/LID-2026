@@ -323,6 +323,26 @@
     .speaker-role { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
     .speaker-name { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1.1; margin-bottom: 8px; }
     .speaker-company { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+    .speaker-download-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 28px;
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 14px 28px; border-radius: 40px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .speaker-download-btn::before {
+      content: '↓';
+      font-size: 15px; font-weight: 400;
+    }
+    .speaker-download-btn:hover {
+      background: var(--accent); color: #000;
+      transform: translateY(-2px);
+    }
     .talk-card {
       background: var(--bg-card2); border: 1px solid var(--border-acc);
       border-radius: var(--radius); padding: 28px 32px; margin-bottom: 28px;
@@ -989,6 +1009,9 @@
       <p style="color:var(--muted);font-size:14px;line-height:1.7;" data-i18n="speaker.bio">
         Giacomo leads Deloitte Digital's commerce and digital transformation practice in Ticino. His work spans AI-powered customer experience, platform strategy and large-scale digital transformation for Consumer, Fashion and Luxury brands across Switzerland and Europe.
       </p>
+      <a href="#" class="speaker-download-btn" data-i18n="speaker.cta.download">
+        Download the Speaker's Presentation
+      </a>
     </div>
   </div>
 </section>

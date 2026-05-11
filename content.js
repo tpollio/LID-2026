@@ -77,6 +77,7 @@ window.CONTENT = {
     'speaker.talk.desc':  "A live, practical session showing how agentic AI is reshaping the end-to-end customer journey — from discovery to checkout to post-purchase — with working demos you can actually try.",
     'speaker.talk.meta':  "14:20 – 14:40 · Sala Teatro",
     'speaker.bio':        "Giacomo leads Deloitte Digital's commerce and digital transformation practice in Ticino. His work spans AI-powered customer experience, platform strategy and large-scale digital transformation for Consumer, Fashion and Luxury brands across Switzerland and Europe.",
+    'speaker.cta.download': "Download the Speaker's Presentation",
 
     // ── SERVICES
     'services.label': "What We Do",
@@ -276,6 +277,7 @@ window.CONTENT = {
     'speaker.talk.desc':  "Una sessione pratica e live che mostra come l'AI agentiva stia ridisegnando il customer journey end-to-end — dalla scoperta al checkout fino al post-acquisto — con demo funzionanti da provare direttamente.",
     'speaker.talk.meta':  "14:20 – 14:40 · Sala Teatro",
     'speaker.bio':        "Giacomo guida la practice di commerce e trasformazione digitale di Deloitte Digital in Ticino. Il suo lavoro spazia dall'esperienza del cliente basata su AI, alla strategia di piattaforma e alla trasformazione digitale su larga scala per brand Consumer, Fashion e Luxury in Svizzera e in Europa.",
+    'speaker.cta.download': "Scarica la presentazione dello speaker",
 
     // ── SERVICES
     'services.label': "Cosa Facciamo",
