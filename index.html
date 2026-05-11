@@ -742,6 +742,21 @@
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* ══════════════════════════════════
+       LANG SWITCH
+    ══════════════════════════════════ */
+    .lang-switch { display: flex; align-items: center; gap: 4px; }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); padding: 5px 8px; border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-btn:hover { color: var(--white); background: var(--accent-dim); }
+    .lang-btn.active { color: var(--accent); }
+    .lang-sep { color: var(--border); font-size: 11px; user-select: none; }
+
+    /* ══════════════════════════════════
        RESPONSIVE (basic)
     ══════════════════════════════════ */
     @media (max-width: 900px) {
@@ -775,7 +790,14 @@
     <span class="nav-divider"></span>
     <img src="deloittedigital-logo-white.png" alt="Deloitte Digital" style="height:22px; width:auto; display:block;">
   </div>
-  <a href="#connect" class="nav-cta">Let's connect</a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="it">IT</button>
+    </div>
+    <a href="#connect" class="nav-cta" data-i18n="nav.cta">Let's connect</a>
+  </div>
 </nav>
 
 <!-- ══════════════════════════════════
@@ -787,68 +809,55 @@
   <div class="hero-top">
     <div>
       <div class="hero-top-lid">LID</div>
-      <div class="hero-top-info">Lifestyle Innovation Day 2026 · 5th Edition</div>
+      <div class="hero-top-info" data-i18n="hero.edition">Lifestyle Innovation Day 2026 · 5th Edition</div>
     </div>
     <div class="hero-top-partner">
       <img src="deloittedigital-logo-white.png" alt="Deloitte Digital" style="height:20px; width:auto; display:block; margin-bottom:4px;">
-      <span>Official Partner</span>
+      <span data-i18n="hero.partner">Official Partner</span>
     </div>
   </div>
   <div class="hero-content">
-    <div class="label label-pill" style="margin-bottom:32px;">Official Invitation · 18 May 2026</div>
+    <div class="label label-pill" style="margin-bottom:32px;" data-i18n="hero.label">Official Invitation · 18 May 2026</div>
     <h1>
-      <span class="line-wrap">The future of <em>Digital,</em></span>
-      <span class="line-wrap"><em>Commerce</em> and</span>
-      <span class="line-wrap"><em>Innovation.</em></span>
+      <span class="line-wrap" data-i18n="hero.h1.1">The future of <em>Digital,</em></span>
+      <span class="line-wrap" data-i18n="hero.h1.2"><em>Commerce</em> and</span>
+      <span class="line-wrap" data-i18n="hero.h1.3"><em>Innovation.</em></span>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="hero.sub">
       Deloitte Digital is proud to partner the 5th edition of Lifestyle Innovation Day at LAC Lugano — where Consumer, Fashion, Luxury and Industrial leaders shape tomorrow's business.
     </p>
     <div class="hero-event-meta" style="margin-top:44px;">
       <div class="hero-meta-item">
-        <div class="meta-label">Date</div>
-        <div class="meta-val">18 May 2026</div>
+        <div class="meta-label" data-i18n="hero.meta.date.label">Date</div>
+        <div class="meta-val" data-i18n="hero.meta.date.val">18 May 2026</div>
       </div>
       <div class="hero-meta-item">
-        <div class="meta-label">Venue</div>
-        <div class="meta-val">LAC Lugano</div>
+        <div class="meta-label" data-i18n="hero.meta.venue.label">Venue</div>
+        <div class="meta-val" data-i18n="hero.meta.venue.val">LAC Lugano</div>
       </div>
       <div class="hero-meta-item">
-        <div class="meta-label">Hours</div>
-        <div class="meta-val">08:00 – 18:00</div>
+        <div class="meta-label" data-i18n="hero.meta.hours.label">Hours</div>
+        <div class="meta-val" data-i18n="hero.meta.hours.val">08:00 – 18:00</div>
       </div>
       <div class="hero-meta-item">
-        <div class="meta-label">Dress code</div>
-        <div class="meta-val">Elegant casual</div>
+        <div class="meta-label" data-i18n="hero.meta.dress.label">Dress code</div>
+        <div class="meta-val" data-i18n="hero.meta.dress.val">Elegant casual</div>
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#connect" class="btn-primary">Book a meeting with us</a>
-      <a href="#speaker" class="btn-secondary">Meet our speaker</a>
+      <a href="#connect" class="btn-primary" data-i18n="hero.cta.primary">Book a meeting with us</a>
+      <a href="#speaker" class="btn-secondary" data-i18n="hero.cta.secondary">Meet our speaker</a>
     </div>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
-    Scroll
+    <span data-i18n="hero.scroll">Scroll</span>
   </div>
 </section>
 
-<!-- ── TICKER ── -->
+<!-- ── TICKER — populated by JS from CONTENT[lang].ticker ── -->
 <div class="ticker-wrap">
-  <div class="ticker">
-    <span class="ticker-item">Agentic Customer Journey</span>
-    <span class="ticker-item">Deloitte Digital · Lugano</span>
-    <span class="ticker-item">AI & Digital Transformation</span>
-    <span class="ticker-item">Consumer · Fashion · Luxury · Industrial</span>
-    <span class="ticker-item">Lifestyle Innovation Day 2026</span>
-    <span class="ticker-item">LAC Lugano · 18 May</span>
-    <span class="ticker-item">Agentic Customer Journey</span>
-    <span class="ticker-item">Deloitte Digital · Lugano</span>
-    <span class="ticker-item">AI & Digital Transformation</span>
-    <span class="ticker-item">Consumer · Fashion · Luxury · Industrial</span>
-    <span class="ticker-item">Lifestyle Innovation Day 2026</span>
-    <span class="ticker-item">LAC Lugano · 18 May</span>
-  </div>
+  <div class="ticker" id="ticker-inner"></div>
 </div>
 
 
@@ -859,58 +868,58 @@
   <div class="inner">
     <div class="agentic-grid">
       <div class="agentic-left reveal">
-        <div class="label">The Big Shift</div>
-        <h2>Agentic AI is <em>rewriting</em> the rules of commerce.</h2>
-        <p style="margin-top:20px;">We've moved beyond chatbots and dashboards. Today, AI agents act autonomously — sensing, deciding and executing across the full customer journey with no human in the loop.</p>
-        <p>For brands in Consumer, Fashion, Luxury and Industrial, this isn't a future scenario. It's happening right now — and the competitive gap between early adopters and the rest is widening fast.</p>
+        <div class="label" data-i18n="agentic.label">The Big Shift</div>
+        <h2 data-i18n="agentic.h2">Agentic AI is <em>rewriting</em> the rules of commerce.</h2>
+        <p style="margin-top:20px;" data-i18n="agentic.p1">We've moved beyond chatbots and dashboards. Today, AI agents act autonomously — sensing, deciding and executing across the full customer journey with no human in the loop.</p>
+        <p data-i18n="agentic.p2">For brands in Consumer, Fashion, Luxury and Industrial, this isn't a future scenario. It's happening right now — and the competitive gap between early adopters and the rest is widening fast.</p>
         <div class="agentic-steps">
           <div class="agentic-step">
             <div class="step-num">01</div>
             <div class="step-text">
-              <strong>Autonomous discovery agents</strong>
-              <span>AI that proactively finds and qualifies new customers before a single ad is shown</span>
+              <strong data-i18n="agentic.step1.title">Autonomous discovery agents</strong>
+              <span data-i18n="agentic.step1.sub">AI that proactively finds and qualifies new customers before a single ad is shown</span>
             </div>
           </div>
           <div class="agentic-step">
             <div class="step-num">02</div>
             <div class="step-text">
-              <strong>Hyper-personalised journey orchestration</strong>
-              <span>Real-time decisions on content, price and channel — for every individual</span>
+              <strong data-i18n="agentic.step2.title">Hyper-personalised journey orchestration</strong>
+              <span data-i18n="agentic.step2.sub">Real-time decisions on content, price and channel — for every individual</span>
             </div>
           </div>
           <div class="agentic-step">
             <div class="step-num">03</div>
             <div class="step-text">
-              <strong>Post-purchase loyalty loops</strong>
-              <span>Agents that anticipate the next need and act on it — before the customer even asks</span>
+              <strong data-i18n="agentic.step3.title">Post-purchase loyalty loops</strong>
+              <span data-i18n="agentic.step3.sub">Agents that anticipate the next need and act on it — before the customer even asks</span>
             </div>
           </div>
         </div>
       </div>
       <div class="agentic-visual reveal reveal-delay-2">
-        <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">The Agentic Journey</div>
+        <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;" data-i18n="agentic.visual.label">The Agentic Journey</div>
         <div class="journey-node">
-          <div class="journey-node-left"><div class="jn-icon">🔍</div><div><div class="jn-label">Discovery</div><div class="jn-sub">Awareness & acquisition</div></div></div>
+          <div class="journey-node-left"><div class="jn-icon">🔍</div><div><div class="jn-label" data-i18n="agentic.node1.label">Discovery</div><div class="jn-sub" data-i18n="agentic.node1.sub">Awareness & acquisition</div></div></div>
           <div class="jn-badge ghost">Traditional</div>
         </div>
         <div class="journey-arrow">↓</div>
         <div class="journey-node active">
-          <div class="journey-node-left"><div class="jn-icon">🤖</div><div><div class="jn-label">Agentic Layer</div><div class="jn-sub">Autonomous AI orchestration</div></div></div>
+          <div class="journey-node-left"><div class="jn-icon">🤖</div><div><div class="jn-label" data-i18n="agentic.node2.label">Agentic Layer</div><div class="jn-sub" data-i18n="agentic.node2.sub">Autonomous AI orchestration</div></div></div>
           <div class="jn-badge">Deloitte Digital</div>
         </div>
         <div class="journey-arrow">↓</div>
         <div class="journey-node">
-          <div class="journey-node-left"><div class="jn-icon">🛒</div><div><div class="jn-label">Conversion</div><div class="jn-sub">Checkout & fulfilment</div></div></div>
+          <div class="journey-node-left"><div class="jn-icon">🛒</div><div><div class="jn-label" data-i18n="agentic.node3.label">Conversion</div><div class="jn-sub" data-i18n="agentic.node3.sub">Checkout & fulfilment</div></div></div>
           <div class="jn-badge ghost">Optimised</div>
         </div>
         <div class="journey-arrow">↓</div>
         <div class="journey-node">
-          <div class="journey-node-left"><div class="jn-icon">🔄</div><div><div class="jn-label">Retention & Loyalty</div><div class="jn-sub">Predict & re-engage</div></div></div>
+          <div class="journey-node-left"><div class="jn-icon">🔄</div><div><div class="jn-label" data-i18n="agentic.node4.label">Retention & Loyalty</div><div class="jn-sub" data-i18n="agentic.node4.sub">Predict & re-engage</div></div></div>
           <div class="jn-badge ghost">Automated</div>
         </div>
         <div class="journey-arrow">↓</div>
         <div class="journey-node">
-          <div class="journey-node-left"><div class="jn-icon">📈</div><div><div class="jn-label">Growth Loop</div><div class="jn-sub">Compounding revenue engine</div></div></div>
+          <div class="journey-node-left"><div class="jn-icon">📈</div><div><div class="jn-label" data-i18n="agentic.node5.label">Growth Loop</div><div class="jn-sub" data-i18n="agentic.node5.sub">Compounding revenue engine</div></div></div>
           <div class="jn-badge ghost">Continuous</div>
         </div>
       </div>
@@ -923,23 +932,23 @@
 ══════════════════════════════════ -->
 <section id="speaker">
   <div class="section-head reveal">
-    <div class="label">Featured Speaker</div>
-    <h2>Meet our voice <em>on stage.</em></h2>
+    <div class="label" data-i18n="speaker.label">Featured Speaker</div>
+    <h2 data-i18n="speaker.h2">Meet our voice <em>on stage.</em></h2>
   </div>
   <div class="speaker-card reveal">
     <div class="speaker-photo-wrap">
       <img src="giacomo-carozza.jpg" alt="Giacomo Carozza" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
     </div>
     <div class="speaker-info">
-      <div class="speaker-role">Featured Speaker · Deloitte Digital</div>
+      <div class="speaker-role" data-i18n="speaker.role">Featured Speaker · Deloitte Digital</div>
       <div class="speaker-name">Giacomo<br>Carozza</div>
-      <div class="speaker-company">Deloitte Digital · Lugano</div>
+      <div class="speaker-company" data-i18n="speaker.company">Deloitte Digital · Lugano</div>
       <div class="talk-card">
-        <div class="talk-quote">"Agentic Customer Journey: hands-on experience."</div>
-        <div class="talk-desc">A live, practical session showing how agentic AI is reshaping the end-to-end customer journey — from discovery to checkout to post-purchase — with working demos you can actually try.</div>
-        <div class="talk-meta">14:20 – 14:40 · Sala Teatro</div>
+        <div class="talk-quote" data-i18n="speaker.talk.quote">"Agentic Customer Journey: hands-on experience."</div>
+        <div class="talk-desc" data-i18n="speaker.talk.desc">A live, practical session showing how agentic AI is reshaping the end-to-end customer journey — from discovery to checkout to post-purchase — with working demos you can actually try.</div>
+        <div class="talk-meta" data-i18n="speaker.talk.meta">14:20 – 14:40 · Sala Teatro</div>
       </div>
-      <p style="color:var(--muted);font-size:14px;line-height:1.7;">
+      <p style="color:var(--muted);font-size:14px;line-height:1.7;" data-i18n="speaker.bio">
         Giacomo leads Deloitte Digital's commerce and digital transformation practice in Ticino. His work spans AI-powered customer experience, platform strategy and large-scale digital transformation for Consumer, Fashion and Luxury brands across Switzerland and Europe.
       </p>
     </div>
@@ -953,15 +962,15 @@
 <section id="services" class="full-bleed">
   <div class="inner">
     <div class="section-head reveal">
-      <div class="label">What We Do</div>
-      <h2>End-to-end capability, <em>local delivery.</em></h2>
-      <p>From strategy to execution, our Ticino team brings the full weight of Deloitte Digital's global practice to your doorstep.</p>
+      <div class="label" data-i18n="services.label">What We Do</div>
+      <h2 data-i18n="services.h2">End-to-end capability, <em>local delivery.</em></h2>
+      <p data-i18n="services.p">From strategy to execution, our Ticino team brings the full weight of Deloitte Digital's global practice to your doorstep.</p>
     </div>
     <div class="services-grid">
       <div class="service-item reveal reveal-delay-1">
         <div class="service-num">01</div>
-        <h3>Commerce & Digital Experience</h3>
-        <p>Platform selection, re-platforming, headless architectures and composable commerce that scales. From Salesforce Commerce to SAP to custom builds.</p>
+        <h3 data-i18n="services.1.h3">Commerce & Digital Experience</h3>
+        <p data-i18n="services.1.p">Platform selection, re-platforming, headless architectures and composable commerce that scales. From Salesforce Commerce to SAP to custom builds.</p>
         <div class="service-tags">
           <span class="tag">Headless Commerce</span>
           <span class="tag">Salesforce</span>
@@ -971,8 +980,8 @@
       </div>
       <div class="service-item reveal reveal-delay-2">
         <div class="service-num">02</div>
-        <h3>AI & Data Intelligence</h3>
-        <p>Agentic AI, predictive personalisation, demand forecasting, customer data platforms and AI-powered decision engines across the entire value chain.</p>
+        <h3 data-i18n="services.2.h3">AI & Data Intelligence</h3>
+        <p data-i18n="services.2.p">Agentic AI, predictive personalisation, demand forecasting, customer data platforms and AI-powered decision engines across the entire value chain.</p>
         <div class="service-tags">
           <span class="tag">Agentic AI</span>
           <span class="tag">CDP</span>
@@ -982,8 +991,8 @@
       </div>
       <div class="service-item reveal reveal-delay-3">
         <div class="service-num">03</div>
-        <h3>Digital Strategy & Innovation</h3>
-        <p>Operating model design, digital roadmap, build-buy-partner decisions and innovation sprints that turn market shifts into competitive advantage.</p>
+        <h3 data-i18n="services.3.h3">Digital Strategy & Innovation</h3>
+        <p data-i18n="services.3.p">Operating model design, digital roadmap, build-buy-partner decisions and innovation sprints that turn market shifts into competitive advantage.</p>
         <div class="service-tags">
           <span class="tag">Strategy</span>
           <span class="tag">Operating Model</span>
@@ -992,8 +1001,8 @@
       </div>
       <div class="service-item reveal reveal-delay-4">
         <div class="service-num">04</div>
-        <h3>Customer Experience Design</h3>
-        <p>Service design, UX research, brand experience and omnichannel journey mapping that puts the customer — not the tech — at the centre.</p>
+        <h3 data-i18n="services.4.h3">Customer Experience Design</h3>
+        <p data-i18n="services.4.p">Service design, UX research, brand experience and omnichannel journey mapping that puts the customer — not the tech — at the centre.</p>
         <div class="service-tags">
           <span class="tag">Service Design</span>
           <span class="tag">UX Research</span>
@@ -1010,42 +1019,42 @@
 <section id="why-dd" class="full-bleed">
   <div class="inner">
     <div class="section-head reveal">
-      <div class="label">Why Deloitte Digital</div>
-      <h2>Global scale. <em>Local roots.</em> Real results.</h2>
-      <p>What sets us apart is the combination of things no competitor can easily replicate.</p>
+      <div class="label" data-i18n="why.label">Why Deloitte Digital</div>
+      <h2 data-i18n="why.h2">Global scale. <em>Local roots.</em> Real results.</h2>
+      <p data-i18n="why.p">What sets us apart is the combination of things no competitor can easily replicate.</p>
     </div>
     <div class="why-grid">
       <div class="why-item reveal reveal-delay-1">
         <div class="why-number">01</div>
-        <h3>The breadth of a global network</h3>
-        <p>65,000+ digital professionals across 50+ countries. When you work with our Ticino team, you tap into a global bench of specialists in every technology and every industry vertical.</p>
+        <h3 data-i18n="why.1.h3">The breadth of a global network</h3>
+        <p data-i18n="why.1.p">65,000+ digital professionals across 50+ countries. When you work with our Ticino team, you tap into a global bench of specialists in every technology and every industry vertical.</p>
       </div>
       <div class="why-item reveal reveal-delay-2">
         <div class="why-number">02</div>
-        <h3>A team embedded in your region</h3>
-        <p>We are not a fly-in team. Our Lugano office means local accountability, proximity to your business, and a genuine understanding of the Ticino and Swiss market dynamics.</p>
+        <h3 data-i18n="why.2.h3">A team embedded in your region</h3>
+        <p data-i18n="why.2.p">We are not a fly-in team. Our Lugano office means local accountability, proximity to your business, and a genuine understanding of the Ticino and Swiss market dynamics.</p>
       </div>
       <div class="why-item reveal reveal-delay-3">
         <div class="why-number">03</div>
-        <h3>End-to-end execution, not advice</h3>
-        <p>Strategy without delivery is just a document. We own the full journey — from business case to go-live — bringing together advisory, design, engineering and change management under one roof.</p>
+        <h3 data-i18n="why.3.h3">End-to-end execution, not advice</h3>
+        <p data-i18n="why.3.p">Strategy without delivery is just a document. We own the full journey — from business case to go-live — bringing together advisory, design, engineering and change management under one roof.</p>
       </div>
     </div>
     <div class="why-grid" style="margin-top:2px;">
       <div class="why-item reveal reveal-delay-1">
         <div class="why-number">04</div>
-        <h3>Technology-agnostic expertise</h3>
-        <p>We are a certified partner of Salesforce, SAP, Adobe, Microsoft, Google Cloud and AWS — but our first loyalty is to your business outcome, not to any single vendor's roadmap.</p>
+        <h3 data-i18n="why.4.h3">Technology-agnostic expertise</h3>
+        <p data-i18n="why.4.p">We are a certified partner of Salesforce, SAP, Adobe, Microsoft, Google Cloud and AWS — but our first loyalty is to your business outcome, not to any single vendor's roadmap.</p>
       </div>
       <div class="why-item reveal reveal-delay-2">
         <div class="why-number">05</div>
-        <h3>AI at the core, not as an add-on</h3>
-        <p>We have been embedding AI into commerce and CX solutions long before the hype. Our agentic AI practice is built on proprietary accelerators and real production deployments.</p>
+        <h3 data-i18n="why.5.h3">AI at the core, not as an add-on</h3>
+        <p data-i18n="why.5.p">We have been embedding AI into commerce and CX solutions long before the hype. Our agentic AI practice is built on proprietary accelerators and real production deployments.</p>
       </div>
       <div class="why-item reveal reveal-delay-3">
         <div class="why-number">06</div>
-        <h3>The trust of Switzerland's leading brands</h3>
-        <p>From global luxury maisons to Swiss industrial leaders, our client portfolio across the country speaks to the confidence placed in Deloitte Digital to deliver what matters most.</p>
+        <h3 data-i18n="why.6.h3">The trust of Switzerland's leading brands</h3>
+        <p data-i18n="why.6.p">From global luxury maisons to Swiss industrial leaders, our client portfolio across the country speaks to the confidence placed in Deloitte Digital to deliver what matters most.</p>
       </div>
     </div>
   </div>
@@ -1056,26 +1065,26 @@
 ══════════════════════════════════ -->
 <section id="impact">
   <div class="section-head reveal">
-    <div class="label">Client Impact</div>
-    <h2>The numbers that <em>matter.</em></h2>
-    <p>Across our global portfolio of Commerce and AI engagements — selected results from recent client work.</p>
+    <div class="label" data-i18n="impact.label">Client Impact</div>
+    <h2 data-i18n="impact.h2">The numbers that <em>matter.</em></h2>
+    <p data-i18n="impact.p">Across our global portfolio of Commerce and AI engagements — selected results from recent client work.</p>
   </div>
   <div class="impact-grid">
     <div class="impact-stat reveal reveal-delay-1">
       <span class="impact-num">+38%</span>
-      <div class="impact-label">Conversion uplift from agentic personalisation in luxury retail</div>
+      <div class="impact-label" data-i18n="impact.1.label">Conversion uplift from agentic personalisation in luxury retail</div>
     </div>
     <div class="impact-stat reveal reveal-delay-2">
       <span class="impact-num">-42%</span>
-      <div class="impact-label">Reduction in customer acquisition cost via AI-driven targeting</div>
+      <div class="impact-label" data-i18n="impact.2.label">Reduction in customer acquisition cost via AI-driven targeting</div>
     </div>
     <div class="impact-stat reveal reveal-delay-3">
       <span class="impact-num">3×</span>
-      <div class="impact-label">Customer lifetime value growth for a consumer goods D2C relaunch</div>
+      <div class="impact-label" data-i18n="impact.3.label">Customer lifetime value growth for a consumer goods D2C relaunch</div>
     </div>
     <div class="impact-stat reveal reveal-delay-4">
       <span class="impact-num">8 mo</span>
-      <div class="impact-label">Average time-to-live for a fully composable commerce re-platform</div>
+      <div class="impact-label" data-i18n="impact.4.label">Average time-to-live for a fully composable commerce re-platform</div>
     </div>
   </div>
 </section>
@@ -1085,9 +1094,9 @@
 ══════════════════════════════════ -->
 <section id="team">
   <div class="section-head reveal">
-    <div class="label">Our Team in Ticino</div>
-    <h2>The people <em>behind the work.</em></h2>
-    <p>A dedicated team based in Lugano, combining deep industry knowledge, technical expertise and the relentless focus on your results.</p>
+    <div class="label" data-i18n="team.label">Our Team in Ticino</div>
+    <h2 data-i18n="team.h2">The people <em>behind the work.</em></h2>
+    <p data-i18n="team.p">A dedicated team based in Lugano, combining deep industry knowledge, technical expertise and the relentless focus on your results.</p>
   </div>
   <div class="team-grid">
     <!-- ⚠️ Replace names, titles, and specialisations with actual team info -->
@@ -1141,9 +1150,9 @@
 ══════════════════════════════════ -->
 <section id="team-italy">
   <div class="section-head reveal">
-    <div class="label">Our Team in Italy</div>
-    <h2>The people <em>behind the work.</em></h2>
-    <p>Our Italian team, bringing the same expertise and commitment to clients across the border.</p>
+    <div class="label" data-i18n="team-italy.label">Our Team in Italy</div>
+    <h2 data-i18n="team-italy.h2">The people <em>behind the work.</em></h2>
+    <p data-i18n="team-italy.p">Our Italian team, bringing the same expertise and commitment to clients across the border.</p>
   </div>
   <div class="team-grid">
     <div class="team-card reveal reveal-delay-1">
@@ -1178,38 +1187,38 @@
 ══════════════════════════════════ -->
 <section id="connect">
   <div class="section-head reveal">
-    <div class="label">Connect with us</div>
-    <h2>Four ways to <em>get started.</em></h2>
-    <p>Download our resources or book a 1:1 meeting with our teams — scan the QR code at our stand or click below.</p>
+    <div class="label" data-i18n="connect.label">Connect with us</div>
+    <h2 data-i18n="connect.h2">Four ways to <em>get started.</em></h2>
+    <p data-i18n="connect.p">Download our resources or book a 1:1 meeting with our teams — scan the QR code at our stand or click below.</p>
   </div>
   <div class="cta-overview-grid reveal">
 
     <a href="#download-ai" class="cta-card">
-      <div class="cta-pill cta-pill--download">📄 Download</div>
-      <h3>The Agentic AI Report</h3>
-      <p>How agentic AI is reshaping the end-to-end customer journey — with real use cases and business impact data.</p>
-      <span class="cta-btn">Get the report →</span>
+      <div class="cta-pill cta-pill--download" data-i18n="connect.dl-ai.pill">📄 Download</div>
+      <h3 data-i18n="connect.dl-ai.h3">The Agentic AI Report</h3>
+      <p data-i18n="connect.dl-ai.p">How agentic AI is reshaping the end-to-end customer journey — with real use cases and business impact data.</p>
+      <span class="cta-btn" data-i18n="connect.dl-ai.btn">Get the report →</span>
     </a>
 
     <a href="#download-guide" class="cta-card">
-      <div class="cta-pill cta-pill--download">📄 Download</div>
-      <h3>The Commerce Guide</h3>
-      <p>A practical guide to composable commerce — platform decisions, architecture patterns and roadmap frameworks.</p>
-      <span class="cta-btn">Get the guide →</span>
+      <div class="cta-pill cta-pill--download" data-i18n="connect.dl-guide.pill">📄 Download</div>
+      <h3 data-i18n="connect.dl-guide.h3">The Commerce Guide</h3>
+      <p data-i18n="connect.dl-guide.p">A practical guide to composable commerce — platform decisions, architecture patterns and roadmap frameworks.</p>
+      <span class="cta-btn" data-i18n="connect.dl-guide.btn">Get the guide →</span>
     </a>
 
     <a href="#meet-ticino" class="cta-card">
-      <div class="cta-pill cta-pill--meet">🤝 Book</div>
-      <h3>Meet Team Ticino</h3>
-      <p>Book a 1:1 slot with our Lugano team during the event. 20 minutes, your agenda, no obligation.</p>
-      <span class="cta-btn cta-btn--solid">Book a meeting →</span>
+      <div class="cta-pill cta-pill--meet" data-i18n="connect.meet-ticino.pill">🤝 Book</div>
+      <h3 data-i18n="connect.meet-ticino.h3">Meet Team Ticino</h3>
+      <p data-i18n="connect.meet-ticino.p">Book a 1:1 slot with our Lugano team during the event. 20 minutes, your agenda, no obligation.</p>
+      <span class="cta-btn cta-btn--solid" data-i18n="connect.meet-ticino.btn">Book a meeting →</span>
     </a>
 
     <a href="#meet-italy" class="cta-card">
-      <div class="cta-pill cta-pill--meet">🤝 Book</div>
-      <h3>Meet Team Italy</h3>
-      <p>Connect with our Italian team for a focused conversation on your specific business challenge.</p>
-      <span class="cta-btn cta-btn--solid">Book a meeting →</span>
+      <div class="cta-pill cta-pill--meet" data-i18n="connect.meet-italy.pill">🤝 Book</div>
+      <h3 data-i18n="connect.meet-italy.h3">Meet Team Italy</h3>
+      <p data-i18n="connect.meet-italy.p">Connect with our Italian team for a focused conversation on your specific business challenge.</p>
+      <span class="cta-btn cta-btn--solid" data-i18n="connect.meet-italy.btn">Book a meeting →</span>
     </a>
 
   </div>
@@ -1220,39 +1229,39 @@
 ══════════════════════════════════ -->
 <section id="download-ai" class="cta-landing full-bleed">
   <div class="cta-landing-inner">
-    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;">📄 Download · AI Report</div>
-    <h2>The Agentic AI <em>Report.</em></h2>
-    <p>Leave your details and we'll send you the report directly — plus a follow-up from our team if you'd like to explore further.</p>
+    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;" data-i18n="dl-ai.pill">📄 Download · AI Report</div>
+    <h2 data-i18n="dl-ai.h2">The Agentic AI <em>Report.</em></h2>
+    <p data-i18n="dl-ai.p">Leave your details and we'll send you the report directly — plus a follow-up from our team if you'd like to explore further.</p>
     <form class="cta-form" id="form-dl-ai" name="download-ai-report" method="POST"
           data-netlify="true" netlify-honeypot="bot-field-dlai">
       <input type="hidden" name="form-name" value="download-ai-report">
       <p style="display:none;"><input name="bot-field-dlai"></p>
       <div class="form-row">
         <div class="form-group">
-          <label>First name *</label>
+          <label data-i18n="form.first-name">First name *</label>
           <input type="text" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label>Last name *</label>
+          <label data-i18n="form.last-name">Last name *</label>
           <input type="text" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company *</label>
+          <label data-i18n="form.company">Company *</label>
           <input type="text" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label>Business email *</label>
+          <label data-i18n="form.email">Business email *</label>
           <input type="email" name="email" placeholder="marco.rossi@company.com" required>
         </div>
       </div>
-      <button type="submit" class="form-submit">Send me the report →</button>
+      <button type="submit" class="form-submit" data-i18n="dl-ai.submit">Send me the report →</button>
     </form>
     <div class="cta-success" id="success-dl-ai" style="display:none;">
       <div class="success-check">✓</div>
-      <h3>Report on its way <em>to your inbox.</em></h3>
-      <p>Check your email — we'll also be in touch to see if we can help further.</p>
+      <h3 data-i18n="dl-ai.success.h3">Report on its way <em>to your inbox.</em></h3>
+      <p data-i18n="dl-ai.success.p">Check your email — we'll also be in touch to see if we can help further.</p>
     </div>
   </div>
 </section>
@@ -1262,39 +1271,39 @@
 ══════════════════════════════════ -->
 <section id="download-guide" class="cta-landing full-bleed">
   <div class="cta-landing-inner">
-    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;">📄 Download · Commerce Guide</div>
-    <h2>The Commerce <em>Guide.</em></h2>
-    <p>Leave your details and we'll send you the guide directly — plus a follow-up from our team if you'd like to explore further.</p>
+    <div class="cta-pill cta-pill--download" style="margin-bottom:24px;" data-i18n="dl-guide.pill">📄 Download · Commerce Guide</div>
+    <h2 data-i18n="dl-guide.h2">The Commerce <em>Guide.</em></h2>
+    <p data-i18n="dl-guide.p">Leave your details and we'll send you the guide directly — plus a follow-up from our team if you'd like to explore further.</p>
     <form class="cta-form" id="form-dl-guide" name="download-commerce-guide" method="POST"
           data-netlify="true" netlify-honeypot="bot-field-dlguide">
       <input type="hidden" name="form-name" value="download-commerce-guide">
       <p style="display:none;"><input name="bot-field-dlguide"></p>
       <div class="form-row">
         <div class="form-group">
-          <label>First name *</label>
+          <label data-i18n="form.first-name">First name *</label>
           <input type="text" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label>Last name *</label>
+          <label data-i18n="form.last-name">Last name *</label>
           <input type="text" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company *</label>
+          <label data-i18n="form.company">Company *</label>
           <input type="text" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label>Business email *</label>
+          <label data-i18n="form.email">Business email *</label>
           <input type="email" name="email" placeholder="marco.rossi@company.com" required>
         </div>
       </div>
-      <button type="submit" class="form-submit">Send me the guide →</button>
+      <button type="submit" class="form-submit" data-i18n="dl-guide.submit">Send me the guide →</button>
     </form>
     <div class="cta-success" id="success-dl-guide" style="display:none;">
       <div class="success-check">✓</div>
-      <h3>Guide on its way <em>to your inbox.</em></h3>
-      <p>Check your email — we'll also be in touch to see if we can help further.</p>
+      <h3 data-i18n="dl-guide.success.h3">Guide on its way <em>to your inbox.</em></h3>
+      <p data-i18n="dl-guide.success.p">Check your email — we'll also be in touch to see if we can help further.</p>
     </div>
   </div>
 </section>
@@ -1304,53 +1313,43 @@
 ══════════════════════════════════ -->
 <section id="meet-ticino" class="cta-landing full-bleed">
   <div class="cta-landing-inner">
-    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;">🤝 Book · Team Ticino</div>
-    <h2>Meet our <em>Ticino team.</em></h2>
-    <p>Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
+    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;" data-i18n="meet-ticino.pill">🤝 Book · Team Ticino</div>
+    <h2 data-i18n="meet-ticino.h2">Meet our <em>Ticino team.</em></h2>
+    <p data-i18n="meet-ticino.p">Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
     <form class="cta-form" id="form-meet-ticino" name="meet-team-ticino" method="POST"
           data-netlify="true" netlify-honeypot="bot-field-ticino">
       <input type="hidden" name="form-name" value="meet-team-ticino">
       <p style="display:none;"><input name="bot-field-ticino"></p>
       <div class="form-row">
         <div class="form-group">
-          <label>First name *</label>
+          <label data-i18n="form.first-name">First name *</label>
           <input type="text" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label>Last name *</label>
+          <label data-i18n="form.last-name">Last name *</label>
           <input type="text" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company *</label>
+          <label data-i18n="form.company">Company *</label>
           <input type="text" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label>Business email *</label>
+          <label data-i18n="form.email">Business email *</label>
           <input type="email" name="email" placeholder="marco.rossi@company.com" required>
         </div>
       </div>
       <div class="form-group">
-        <label>Topic</label>
-        <select name="topic">
-          <option value="">Select a topic</option>
-          <option>Agentic AI & Customer Journey</option>
-          <option>Commerce Platform & Re-platforming</option>
-          <option>AI Personalisation & Data</option>
-          <option>Digital Strategy & Innovation</option>
-          <option>Customer Experience Design</option>
-          <option>Fashion & Luxury Digital</option>
-          <option>Industrial & B2B Commerce</option>
-          <option>Other</option>
-        </select>
+        <label data-i18n="form.topic">Topic</label>
+        <select name="topic" class="topic-select"><!-- populated by JS --></select>
       </div>
-      <button type="submit" class="form-submit">Book with Team Ticino →</button>
+      <button type="submit" class="form-submit" data-i18n="meet-ticino.submit">Book with Team Ticino →</button>
     </form>
     <div class="cta-success" id="success-meet-ticino" style="display:none;">
       <div class="success-check">✓</div>
-      <h3>We'll be in touch <em>shortly.</em></h3>
-      <p>Our Ticino team will confirm your slot within a few hours.</p>
+      <h3 data-i18n="meet-ticino.success.h3">We'll be in touch <em>shortly.</em></h3>
+      <p data-i18n="meet-ticino.success.p">Our Ticino team will confirm your slot within a few hours.</p>
     </div>
   </div>
 </section>
@@ -1360,66 +1359,107 @@
 ══════════════════════════════════ -->
 <section id="meet-italy" class="cta-landing full-bleed">
   <div class="cta-landing-inner">
-    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;">🤝 Book · Team Italy</div>
-    <h2>Meet our <em>Italian team.</em></h2>
-    <p>Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
+    <div class="cta-pill cta-pill--meet" style="margin-bottom:24px;" data-i18n="meet-italy.pill">🤝 Book · Team Italy</div>
+    <h2 data-i18n="meet-italy.h2">Meet our <em>Italian team.</em></h2>
+    <p data-i18n="meet-italy.p">Reserve a 20-minute 1:1 slot at our stand. We'll follow up to confirm your preferred time.</p>
     <form class="cta-form" id="form-meet-italy" name="meet-team-italy" method="POST"
           data-netlify="true" netlify-honeypot="bot-field-italy">
       <input type="hidden" name="form-name" value="meet-team-italy">
       <p style="display:none;"><input name="bot-field-italy"></p>
       <div class="form-row">
         <div class="form-group">
-          <label>First name *</label>
+          <label data-i18n="form.first-name">First name *</label>
           <input type="text" name="first-name" placeholder="Marco" required>
         </div>
         <div class="form-group">
-          <label>Last name *</label>
+          <label data-i18n="form.last-name">Last name *</label>
           <input type="text" name="last-name" placeholder="Rossi" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>Company *</label>
+          <label data-i18n="form.company">Company *</label>
           <input type="text" name="company" placeholder="Your company" required>
         </div>
         <div class="form-group">
-          <label>Business email *</label>
+          <label data-i18n="form.email">Business email *</label>
           <input type="email" name="email" placeholder="marco.rossi@company.com" required>
         </div>
       </div>
       <div class="form-group">
-        <label>Topic</label>
-        <select name="topic">
-          <option value="">Select a topic</option>
-          <option>Agentic AI & Customer Journey</option>
-          <option>Commerce Platform & Re-platforming</option>
-          <option>AI Personalisation & Data</option>
-          <option>Digital Strategy & Innovation</option>
-          <option>Customer Experience Design</option>
-          <option>Fashion & Luxury Digital</option>
-          <option>Industrial & B2B Commerce</option>
-          <option>Other</option>
-        </select>
+        <label data-i18n="form.topic">Topic</label>
+        <select name="topic" class="topic-select"><!-- populated by JS --></select>
       </div>
-      <button type="submit" class="form-submit">Book with Team Italy →</button>
+      <button type="submit" class="form-submit" data-i18n="meet-italy.submit">Book with Team Italy →</button>
     </form>
     <div class="cta-success" id="success-meet-italy" style="display:none;">
       <div class="success-check">✓</div>
-      <h3>We'll be in touch <em>shortly.</em></h3>
-      <p>Our Italian team will confirm your slot within a few hours.</p>
+      <h3 data-i18n="meet-italy.success.h3">We'll be in touch <em>shortly.</em></h3>
+      <p data-i18n="meet-italy.success.p">Our Italian team will confirm your slot within a few hours.</p>
     </div>
   </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-left">
+  <div class="footer-left" data-i18n="footer.left">
     <span>Deloitte Digital · Lugano</span> — Lifestyle Innovation Day 2026 · 18 May · LAC Lugano
   </div>
-  <div class="footer-right">lifestyleinnovationday.ch</div>
+  <div class="footer-right" data-i18n="footer.right">lifestyleinnovationday.ch</div>
 </footer>
 
+<script src="content.js"></script>
 <script>
+  // ══════════════════════════════════
+  //  LANGUAGE ENGINE
+  // ══════════════════════════════════
+  let currentLang = localStorage.getItem('lid-lang') || 'en';
+
+  function applyLanguage(lang) {
+    const C = window.CONTENT[lang];
+    if (!C) return;
+    currentLang = lang;
+
+    // Apply all data-i18n text nodes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = C[el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;
+    });
+
+    // Rebuild ticker
+    const ticker = document.getElementById('ticker-inner');
+    if (ticker && C.ticker) {
+      const items = [...C.ticker, ...C.ticker]; // duplicate for seamless loop
+      ticker.innerHTML = items.map(t => `<span class="ticker-item">${t}</span>`).join('');
+    }
+
+    // Rebuild topic selects
+    document.querySelectorAll('select.topic-select').forEach(sel => {
+      if (!C['form.topic.options']) return;
+      sel.innerHTML =
+        `<option value="">${C['form.topic.placeholder'] || ''}</option>` +
+        C['form.topic.options'].map(o => `<option>${o}</option>`).join('');
+    });
+
+    // Update <html lang>
+    document.documentElement.lang = lang;
+
+    // Update toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn =>
+      btn.classList.toggle('active', btn.dataset.lang === lang)
+    );
+
+    localStorage.setItem('lid-lang', lang);
+  }
+
+  // Apply immediately (before animations run)
+  applyLanguage(currentLang);
+
+  // Lang toggle
+  document.querySelectorAll('.lang-btn').forEach(btn =>
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang))
+  );
+
   // ── Nav shrink on scroll
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
@@ -1449,45 +1489,28 @@
     }, 100);
   });
 
-  // ── Animated number counter
-  function animateCounters() {
-    document.querySelectorAll('.impact-num').forEach(el => {
-      const text = el.textContent.trim();
-      // just add a subtle pulse when visible
-      el.style.transition = 'transform 0.4s';
-    });
-  }
-
-  // ── Journey node hover loop (subtle highlight cycling)
+  // ── Journey node hover loop
   const nodes = document.querySelectorAll('.journey-node');
-  let current = 1; // start at the "active" node
   setInterval(() => {
-    nodes.forEach((n, i) => {
-      if (n.classList.contains('active') && !n.dataset.pinned) {
-        n.classList.remove('active');
-      }
-    });
+    nodes.forEach(n => { if (!n.dataset.pinned) n.classList.remove('active'); });
     const idx = Math.floor(Math.random() * nodes.length);
     if (!nodes[idx].dataset.pinned) {
       nodes[idx].classList.add('active');
       setTimeout(() => nodes[idx].classList.remove('active'), 1200);
     }
   }, 1800);
-  // Pin the agentic layer node as always active
   nodes[1] && (nodes[1].dataset.pinned = 'true');
 
-  // ── Netlify Forms submit (AJAX — no page redirect)
+  // ── Netlify Forms submit (AJAX)
   function wireForm(formId, successId) {
     const form    = document.getElementById(formId);
     const success = document.getElementById(successId);
     if (!form || !success) return;
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending…';
+      btn.textContent = window.CONTENT[currentLang]['form.sending'] || 'Sending…';
       btn.disabled = true;
-
       try {
         await fetch('/', {
           method: 'POST',
@@ -1497,7 +1520,7 @@
         form.style.display    = 'none';
         success.style.display = 'block';
       } catch (err) {
-        btn.textContent = 'Something went wrong — please try again';
+        btn.textContent = window.CONTENT[currentLang]['form.error'] || 'Something went wrong — please try again';
         btn.style.background = 'rgba(255,80,80,0.15)';
         btn.style.color = '#ff6060';
         btn.disabled = false;
