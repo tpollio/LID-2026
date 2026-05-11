@@ -1,5 +1,8 @@
 # Original / source photos — not pushed to GitHub
 _originals/
 
+# Source materials (PDFs, assets, etc.) — not pushed to GitHub
+_materials/
+
 # macOS
 .DS_Store
