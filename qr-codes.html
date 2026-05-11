@@ -3,120 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LID 2026 · QR Codes · Deloitte Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <title>LID 2026 · QR Code · Deloitte Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent:   #9FD235;
-      --dark:     #080808;
-      --card-bg:  #f8f8f6;
-      --border:   #e0e0d8;
-      --muted:    #888;
+      --accent: #9FD235;
+      --dark:   #080808;
+      --border: #e0e0d8;
+      --muted:  #888;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background: #f0f0ec;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 40px 24px;
       color: var(--dark);
     }
 
     /* ── TOOLBAR (hidden on print) ── */
     .toolbar {
-      max-width: 860px;
-      margin: 0 auto 40px;
+      width: 100%; max-width: 480px;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px 28px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-end;
-      flex-wrap: wrap;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;
     }
-    .toolbar-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 260px; }
+    .toolbar-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 200px; }
     .toolbar-group label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
     }
     .toolbar-group input {
       border: 1.5px solid var(--border); border-radius: 8px;
       padding: 10px 14px; font-family: 'Inter', sans-serif;
-      font-size: 14px; outline: none; transition: border-color 0.2s;
+      font-size: 13px; outline: none; transition: border-color 0.2s;
     }
     .toolbar-group input:focus { border-color: var(--accent); }
-    .toolbar-hint { font-size: 12px; color: var(--muted); }
     .btn-print {
       background: var(--accent); color: #000;
       border: none; border-radius: 40px;
-      padding: 12px 28px; font-family: 'Inter', sans-serif;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      cursor: pointer; white-space: nowrap;
+      padding: 12px 24px; font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; cursor: pointer; white-space: nowrap;
       transition: opacity 0.2s;
     }
     .btn-print:hover { opacity: 0.85; }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      max-width: 860px; margin: 0 auto 32px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .page-logo { display: flex; align-items: center; gap: 12px; }
-    .page-lid {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 600; color: var(--accent);
-      border: 2px solid var(--accent); border-radius: 6px;
-      padding: 2px 10px;
-    }
-    .page-brand { font-size: 13px; font-weight: 600; color: #555; }
-    .page-event { font-size: 12px; color: var(--muted); text-align: right; }
-    .page-event strong { display: block; font-size: 14px; color: var(--dark); }
-
-    /* ── QR GRID ── */
-    .qr-grid {
-      max-width: 860px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
+    /* ── QR CARD ── */
     .qr-card {
+      width: 100%; max-width: 380px;
       background: #fff;
       border: 1.5px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 28px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      position: relative;
+      border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
-    .qr-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-    .qr-card.download::before { background: var(--accent); }
-    .qr-card.meet::before     { background: var(--dark); }
 
-    .qr-pill {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 40px;
-      align-self: flex-start;
+    .qr-card-top {
+      background: var(--dark);
+      padding: 24px 28px 20px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .qr-card.download .qr-pill {
-      border: 1.5px solid var(--accent); color: var(--accent);
-      background: transparent;
+    .qr-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700; color: var(--accent);
     }
-    .qr-card.meet .qr-pill {
-      background: var(--dark); color: #fff;
-      border: 1.5px solid var(--dark);
+    .qr-brand { font-size: 11px; color: rgba(255,255,255,0.5); text-align: right; }
+    .qr-brand strong { display: block; color: #fff; font-size: 12px; }
+
+    .qr-body {
+      padding: 32px 28px;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
     }
 
     .qr-code-wrap {
-      width: 180px; height: 180px;
+      width: 200px; height: 200px;
       border: 1px solid var(--border); border-radius: 12px;
       padding: 12px;
       display: flex; align-items: center; justify-content: center;
@@ -124,155 +95,111 @@
     }
     .qr-code-wrap canvas, .qr-code-wrap img { display: block; }
 
-    .qr-info { text-align: center; }
-    .qr-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px; font-weight: 600; margin-bottom: 6px;
-    }
-    .qr-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
-    .qr-url {
-      font-size: 10px; color: #aaa; word-break: break-all;
-      font-family: monospace; letter-spacing: 0.02em;
-    }
-
-    /* ── FOOTER ── */
-    .print-footer {
-      max-width: 860px; margin: 32px auto 0;
+    .qr-cta {
       text-align: center;
-      font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .qr-cta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .qr-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 8px;
+    }
+    .qr-cta-desc {
+      font-size: 12px; color: var(--muted); line-height: 1.6;
     }
 
-    /* ── PRINT STYLES ── */
+    .qr-card-bottom {
+      border-top: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .qr-event { font-size: 11px; color: var(--muted); }
+    .qr-event strong { color: var(--dark); }
+    .qr-url { font-size: 10px; color: #bbb; font-family: monospace; }
+
+    /* ── PRINT ── */
     @media print {
-      body { background: #fff; padding: 0; }
+      body { background: #fff; padding: 20px; justify-content: flex-start; }
       .toolbar { display: none !important; }
-      .page-header { margin-bottom: 24px; }
-      .qr-grid { gap: 16px; }
-      .qr-card { break-inside: avoid; border-color: #ccc; }
+      .qr-card { box-shadow: none; max-width: 340px; margin: 0 auto; }
     }
   </style>
 </head>
 <body>
 
 <!-- TOOLBAR -->
-<div class="toolbar no-print">
+<div class="toolbar">
   <div class="toolbar-group">
-    <label>Base URL</label>
+    <label>URL</label>
     <input type="url" id="base-url"
-           placeholder="https://staging--lid.2026.netlify.app"
-           value="https://staging--lid.2026.netlify.app">
-    <span class="toolbar-hint">Paste your staging or production URL — QR codes update live</span>
+           value="https://staging--lid.2026.netlify.app"
+           placeholder="https://yourdomain.com">
   </div>
-  <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+  <button class="btn-print" onclick="window.print()">🖨 Print</button>
 </div>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-logo">
-    <div class="page-lid">LID</div>
-    <div class="page-brand">Deloitte Digital · Lugano</div>
-  </div>
-  <div class="page-event">
-    <strong>Lifestyle Innovation Day 2026</strong>
-    18 May · LAC Lugano
-  </div>
-</div>
+<!-- QR CARD -->
+<div class="qr-card">
 
-<!-- QR GRID -->
-<div class="qr-grid">
-
-  <div class="qr-card download">
-    <div class="qr-pill">📄 Download</div>
-    <div class="qr-code-wrap" id="qr-dl-ai"></div>
-    <div class="qr-info">
-      <div class="qr-title">The Agentic AI Report</div>
-      <div class="qr-desc">Scan to download the report on how agentic AI is reshaping the customer journey</div>
-      <div class="qr-url" id="url-dl-ai">—</div>
+  <div class="qr-card-top">
+    <div class="qr-logo">LID</div>
+    <div class="qr-brand">
+      <strong>Deloitte Digital</strong>
+      Lugano
     </div>
   </div>
 
-  <div class="qr-card download">
-    <div class="qr-pill">📄 Download</div>
-    <div class="qr-code-wrap" id="qr-dl-guide"></div>
-    <div class="qr-info">
-      <div class="qr-title">The Commerce Guide</div>
-      <div class="qr-desc">Scan to download the practical guide to composable commerce and platform strategy</div>
-      <div class="qr-url" id="url-dl-guide">—</div>
+  <div class="qr-body">
+    <div class="qr-code-wrap" id="qr-container"></div>
+    <div class="qr-cta">
+      <div class="qr-cta-label">Scan to connect</div>
+      <div class="qr-cta-title">Download reports &<br>book a meeting</div>
+      <div class="qr-cta-desc">Access our AI Report, Commerce Guide<br>or book a 1:1 with our teams</div>
     </div>
   </div>
 
-  <div class="qr-card meet">
-    <div class="qr-pill">🤝 Book</div>
-    <div class="qr-code-wrap" id="qr-meet-ticino"></div>
-    <div class="qr-info">
-      <div class="qr-title">Meet Team Ticino</div>
-      <div class="qr-desc">Scan to book a 1:1 slot with our Lugano team — 20 minutes, your agenda</div>
-      <div class="qr-url" id="url-meet-ticino">—</div>
-    </div>
+  <div class="qr-card-bottom">
+    <div class="qr-event"><strong>18 May 2026</strong> · LAC Lugano</div>
+    <div class="qr-url" id="qr-url-label"></div>
   </div>
 
-  <div class="qr-card meet">
-    <div class="qr-pill">🤝 Book</div>
-    <div class="qr-code-wrap" id="qr-meet-italy"></div>
-    <div class="qr-info">
-      <div class="qr-title">Meet Team Italy</div>
-      <div class="qr-desc">Scan to book a 1:1 slot with our Italian team for a focused conversation</div>
-      <div class="qr-url" id="url-meet-italy">—</div>
-    </div>
-  </div>
-
-</div>
-
-<div class="print-footer">
-  Deloitte Digital · Lifestyle Innovation Day 2026 · 18 May · LAC Lugano
 </div>
 
 <script>
-  const CTAs = [
-    { containerId: 'qr-dl-ai',       urlId: 'url-dl-ai',       anchor: '#download-ai'    },
-    { containerId: 'qr-dl-guide',    urlId: 'url-dl-guide',    anchor: '#download-guide' },
-    { containerId: 'qr-meet-ticino', urlId: 'url-meet-ticino', anchor: '#meet-ticino'    },
-    { containerId: 'qr-meet-italy',  urlId: 'url-meet-italy',  anchor: '#meet-italy'     },
-  ];
+  let qrInstance = null;
 
-  function buildQRCodes(base) {
-    // Normalise: strip trailing slash
+  function buildQR(base) {
     base = (base || '').replace(/\/$/, '').trim();
+    const url = base ? base + '#connect' : '';
+    const container = document.getElementById('qr-container');
+    const label = document.getElementById('qr-url-label');
 
-    CTAs.forEach(({ containerId, urlId, anchor }) => {
-      const url      = base ? base + anchor : '(enter URL above)';
-      const wrap     = document.getElementById(containerId);
-      const urlLabel = document.getElementById(urlId);
+    container.innerHTML = '';
+    label.textContent = url || '—';
 
-      // Clear previous QR
-      wrap.innerHTML = '';
-      urlLabel.textContent = url;
+    if (!url) return;
 
-      if (!base) return;
-
-      new QRCode(wrap, {
-        text:          url,
-        width:         156,
-        height:        156,
-        colorDark:     '#080808',
-        colorLight:    '#ffffff',
-        correctLevel:  QRCode.CorrectLevel.M,
-      });
+    qrInstance = new QRCode(container, {
+      text:         url,
+      width:        176,
+      height:       176,
+      colorDark:    '#080808',
+      colorLight:   '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M,
     });
   }
 
-  // Build on load with default URL
-  buildQRCodes(input.value);
-
-  // Rebuild whenever URL changes
   const input = document.getElementById('base-url');
-  input.addEventListener('input', () => buildQRCodes(input.value));
+  buildQR(input.value);
+  input.addEventListener('input', () => buildQR(input.value));
 
-  // If URL is pre-filled via ?url= query param (handy for sharing)
+  // ?url= query param support
   const params = new URLSearchParams(location.search);
   if (params.get('url')) {
     input.value = params.get('url');
-    buildQRCodes(params.get('url'));
+    buildQR(params.get('url'));
   }
 </script>
 
