@@ -22,15 +22,23 @@ const DOCS = {
 
 exports.handler = async (event) => {
   try {
-    const { payload } = JSON.parse(event.body);
-    const formName  = payload.data['form-name'];
-    const doc       = DOCS[formName];
+    const body      = JSON.parse(event.body);
+    const payload   = body.payload || body;
+
+    // Netlify provides form_name natively; fall back to our hidden input
+    const formName  = payload.form_name || payload.data?.['form-name'];
+    console.log('submission-created fired — form:', formName);
+
+    const doc = DOCS[formName];
 
     // Not a download form (meet-ticino, visit-italian-ai-center) — nothing to send
-    if (!doc) return { statusCode: 200, body: 'no-op' };
+    if (!doc) {
+      console.log('No-op for form:', formName);
+      return { statusCode: 200, body: 'no-op' };
+    }
 
-    const firstName   = payload.data['first-name'] || 'there';
-    const toEmail     = payload.data['email'];
+    const firstName   = payload.data?.['first-name'] || payload.first_name || 'there';
+    const toEmail     = payload.data?.['email']       || payload.email;
     const fromAddress = process.env.RESEND_FROM || 'onboarding@resend.dev';
 
     // DEPLOY_URL is injected by Netlify — correct for both staging and production
