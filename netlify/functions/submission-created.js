@@ -41,6 +41,7 @@ exports.handler = async (event) => {
     const firstName   = payload.data?.['first-name'] || payload.first_name || 'there';
     const toEmail     = payload.data?.['email']       || payload.email;
     const fromAddress = process.env.RESEND_FROM || 'onboarding@resend.dev';
+    console.log('From address:', fromAddress);
 
     // SITE_URL = custom env var set per context in Netlify dashboard
     // Fallback chain: SITE_URL → DEPLOY_PRIME_URL → URL
