@@ -19,10 +19,10 @@ window.CONTENT = {
     'hero.label':               "Official Invitation · 18 May 2026",
     'hero.edition':             "Lifestyle Innovation Day 2026 · 5th Edition",
     'hero.partner':             "Official Partner",
-    'hero.h1.1':                "The future of <em>Digital,</em>",
-    'hero.h1.2':                "<em>Commerce</em> and",
-    'hero.h1.3':                "<em>Innovation.</em>",
-    'hero.sub':                 "Deloitte Digital is proud to partner the 5th edition of Lifestyle Innovation Day at LAC Lugano — where Consumer, Fashion, Luxury and Industrial leaders shape tomorrow's business.",
+    'hero.h1.1':                "Your Partner for <em>AI,</em>",
+    'hero.h1.2':                "<em>Digital</em> Transformation,",
+    'hero.h1.3':                "and <em>Innovation.</em>",
+    'hero.sub':                 "Deloitte Digital is Gold Sponsor to partner the 5th edition of Lifestyle Innovation Day at LAC Lugano — where Consumer, Fashion, Luxury and Industrial leaders shape tomorrow's business.",
     'hero.meta.date.label':     "Date",
     'hero.meta.date.val':       "18 May 2026",
     'hero.meta.venue.label':    "Venue",
@@ -109,18 +109,9 @@ window.CONTENT = {
     'why.6.h3':   "The trust of Switzerland's leading brands",
     'why.6.p':    "From global luxury maisons to Swiss industrial leaders, our client portfolio across the country speaks to the confidence placed in Deloitte Digital to deliver what matters most.",
 
-    // ── IMPACT NUMBERS
-    'impact.label':   "Client Impact",
-    'impact.h2':      "The numbers that <em>matter.</em>",
-    'impact.p':       "Across our global portfolio of Commerce and AI engagements — selected results from recent client work.",
-    'impact.1.label': "Conversion uplift from agentic personalisation in luxury retail",
-    'impact.2.label': "Reduction in customer acquisition cost via AI-driven targeting",
-    'impact.3.label': "Customer lifetime value growth for a consumer goods D2C relaunch",
-    'impact.4.label': "Average time-to-live for a fully composable commerce re-platform",
-
     // ── TEAM TICINO
     'team.label': "Our Team in Ticino",
-    'team.h2':    "The people <em>behind the work.</em>",
+    'team.h2':    "Meet our Team in <em>Ticino.</em>",
     'team.p':     "A dedicated team based in Lugano, combining deep industry knowledge, technical expertise and the relentless focus on your results.",
 
     'team.alessio.role':    "Partner",
@@ -144,7 +135,7 @@ window.CONTENT = {
 
     // ── TEAM ITALY
     'team-italy.label': "Our Team in Italy",
-    'team-italy.h2':    "The people <em>behind the work.</em>",
+    'team-italy.h2':    "Meet our Team in <em>Italy.</em>",
     'team-italy.p':     "Our Italian team, bringing the same expertise and commitment to clients across the border.",
 
     'team.umberto.role':     "Partner",
@@ -245,8 +236,8 @@ window.CONTENT = {
 
     // ── QR CODE CARD
     'qr.label': "Scan to connect",
-    'qr.title': "Download reports &<br>book a meeting",
-    'qr.desc':  "Access our AI Report, Commerce Guide<br>or book a 1:1 with our teams",
+    'qr.title': "Download reports &<br>meet our teams",
+    'qr.desc':  "Access the Keynote, our AI Report,<br>or meet our teams in Ticino or Milan",
     'qr.event': "<strong>18 May 2026</strong> · LAC Lugano",
   },
 
@@ -263,10 +254,10 @@ window.CONTENT = {
     'hero.label':               "Invito Ufficiale · 18 Maggio 2026",
     'hero.edition':             "Lifestyle Innovation Day 2026 · 5ª Edizione",
     'hero.partner':             "Partner Ufficiale",
-    'hero.h1.1':                "Il futuro del <em>Digital,</em>",
-    'hero.h1.2':                "<em>Commerce</em> e",
-    'hero.h1.3':                "dell'<em>Innovazione.</em>",
-    'hero.sub':                 "Deloitte Digital è orgogliosa di essere partner della 5ª edizione del Lifestyle Innovation Day al LAC di Lugano — dove i leader di Consumer, Fashion, Luxury e Industrial danno forma al business di domani.",
+    'hero.h1.1':                "Il vostro Partner per <em>AI,</em>",
+    'hero.h1.2':                "Trasformazioni <em>Digitali,</em>",
+    'hero.h1.3':                "ed <em>Innovazione.</em>",
+    'hero.sub':                 "Deloitte Digital è Gold Sponsor della 5ª edizione del Lifestyle Innovation Day al LAC di Lugano — dove i leader di Consumer, Fashion, Luxury e Industrial danno forma al business di domani.",
     'hero.meta.date.label':     "Data",
     'hero.meta.date.val':       "18 Maggio 2026",
     'hero.meta.venue.label':    "Location",
@@ -353,18 +344,9 @@ window.CONTENT = {
     'why.6.h3':   "La fiducia dei principali brand svizzeri",
     'why.6.p':    "Dalle maison del lusso globale ai leader industriali svizzeri, il nostro portfolio clienti nel paese testimonia la fiducia riposta in Deloitte Digital per consegnare ciò che conta di più.",
 
-    // ── IMPACT NUMBERS
-    'impact.label':   "Impatto sui Clienti",
-    'impact.h2':      "I numeri che <em>contano.</em>",
-    'impact.p':       "Dal nostro portfolio globale di engagement in Commerce e AI — risultati selezionati da recenti lavori con i clienti.",
-    'impact.1.label': "Incremento della conversione grazie alla personalizzazione agentiva nel luxury retail",
-    'impact.2.label': "Riduzione del costo di acquisizione clienti tramite targeting basato su AI",
-    'impact.3.label': "Crescita del customer lifetime value per il rilancio D2C di un'azienda di consumer goods",
-    'impact.4.label': "Tempo medio di go-live per un re-platform completamente composable",
-
     // ── TEAM TICINO
     'team.label': "Il Nostro Team in Ticino",
-    'team.h2':    "Le persone <em>dietro al lavoro.</em>",
+    'team.h2':    "Il nostro Team in <em>Ticino.</em>",
     'team.p':     "Un team dedicato a Lugano, che combina profonda conoscenza del settore, competenza tecnica e focus costante sui tuoi risultati.",
 
     'team.alessio.role':    "Partner",
@@ -388,7 +370,7 @@ window.CONTENT = {
 
     // ── TEAM ITALY
     'team-italy.label': "Il Nostro Team in Italia",
-    'team-italy.h2':    "Le persone <em>dietro al lavoro.</em>",
+    'team-italy.h2':    "Il nostro Team in <em>Italia.</em>",
     'team-italy.p':     "Il nostro team italiano, che porta la stessa competenza e impegno ai clienti oltre confine.",
 
     'team.umberto.role':     "Partner",
@@ -489,8 +471,8 @@ window.CONTENT = {
 
     // ── QR CODE CARD
     'qr.label': "Scansiona per connetterti",
-    'qr.title': "Scarica i report &<br>prenota un incontro",
-    'qr.desc':  "Accedi al nostro AI Report, Commerce Guide<br>o prenota un 1:1 con il nostro team",
+    'qr.title': "Scarica i report &<br>conosci i nostri team",
+    'qr.desc':  "Accedi alla Keynote, al nostro AI Report,<br>o incontra i nostri team in Ticino o Milano",
     'qr.event': "<strong>18 maggio 2026</strong> · LAC Lugano",
   },
 

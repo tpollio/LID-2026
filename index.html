@@ -457,33 +457,10 @@
     .why-item p { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
     /* ══════════════════════════════════
-       SECTION 9 — IMPACT / NUMBERS
-    ══════════════════════════════════ */
-    #impact {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .impact-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 56px;
-    }
-    .impact-stat {
-      padding: 44px 32px; border-right: 1px solid var(--border);
-      text-align: center; transition: background 0.3s;
-    }
-    .impact-stat:last-child { border-right: none; }
-    .impact-stat:hover { background: var(--accent-dim); }
-    .impact-num {
-      font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700;
-      color: var(--accent); display: block; line-height: 1;
-    }
-    .impact-label { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
-
-    /* ══════════════════════════════════
        SECTION 10 — TEAM
     ══════════════════════════════════ */
     #team .team-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 56px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px;
     }
     #team-italy .team-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px;
@@ -793,7 +770,6 @@
       .speaker-info { padding: 32px 24px; }
       .talk-pillars { grid-template-columns: 1fr !important; }
       .services-grid { grid-template-columns: 1fr 1fr !important; }
-      .impact-grid { grid-template-columns: 1fr 1fr !important; }
       .why-grid { grid-template-columns: 1fr !important; }
       .team-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .industry-grid { grid-template-columns: 1fr !important; }
@@ -830,7 +806,6 @@
       .services-grid { grid-template-columns: 1fr !important; }
       #team .team-grid { grid-template-columns: 1fr 1fr !important; }
       #team-italy .team-grid { grid-template-columns: 1fr 1fr !important; max-width: 100%; }
-      .impact-grid { grid-template-columns: 1fr 1fr !important; }
       .cta-overview-grid { gap: 12px; }
       a.cta-card { padding: 24px 20px; }
       .cta-form { padding: 24px 16px; }
@@ -1121,35 +1096,6 @@
 </section>
 
 <!-- ══════════════════════════════════
-     SECTION 9 — IMPACT NUMBERS
-══════════════════════════════════ -->
-<section id="impact">
-  <div class="section-head reveal">
-    <div class="label" data-i18n="impact.label">Client Impact</div>
-    <h2 data-i18n="impact.h2">The numbers that <em>matter.</em></h2>
-    <p data-i18n="impact.p">Across our global portfolio of Commerce and AI engagements — selected results from recent client work.</p>
-  </div>
-  <div class="impact-grid">
-    <div class="impact-stat reveal reveal-delay-1">
-      <span class="impact-num">+38%</span>
-      <div class="impact-label" data-i18n="impact.1.label">Conversion uplift from agentic personalisation in luxury retail</div>
-    </div>
-    <div class="impact-stat reveal reveal-delay-2">
-      <span class="impact-num">-42%</span>
-      <div class="impact-label" data-i18n="impact.2.label">Reduction in customer acquisition cost via AI-driven targeting</div>
-    </div>
-    <div class="impact-stat reveal reveal-delay-3">
-      <span class="impact-num">3×</span>
-      <div class="impact-label" data-i18n="impact.3.label">Customer lifetime value growth for a consumer goods D2C relaunch</div>
-    </div>
-    <div class="impact-stat reveal reveal-delay-4">
-      <span class="impact-num">8 mo</span>
-      <div class="impact-label" data-i18n="impact.4.label">Average time-to-live for a fully composable commerce re-platform</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════
      SECTION 10 — TEAM
 ══════════════════════════════════ -->
 <section id="team">
@@ -1179,6 +1125,14 @@
       </div>
     </div>
     <div class="team-card reveal reveal-delay-3">
+      <div class="team-photo"><img src="giacomo-carozza.jpg" alt="Giacomo Carozza"></div>
+      <div class="team-info">
+        <div class="team-role" data-i18n="team.giacomo.role">Director</div>
+        <div class="team-name" data-i18n="team.giacomo.name">Giacomo Carozza</div>
+        <div class="team-focus" data-i18n="team.giacomo.focus">Agentic AI · Commerce · Digital Transformation</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
       <div class="team-photo"><img src="marta-pazzini.jpg" alt="Marta Pazzini"></div>
       <div class="team-info">
         <div class="team-role" data-i18n="team.marta.role">Senior Manager</div>
@@ -1186,7 +1140,7 @@
         <div class="team-focus" data-i18n="team.marta.focus">Commerce Platforms · Salesforce · Digital Architecture</div>
       </div>
     </div>
-    <div class="team-card reveal reveal-delay-4">
+    <div class="team-card reveal" style="transition-delay:0.5s;">
       <div class="team-photo"><img src="tonino-pollio.jpg" alt="Tonino Pollio"></div>
       <div class="team-info">
         <div class="team-role" data-i18n="team.tonino.role">Senior Manager</div>
@@ -1194,7 +1148,7 @@
         <div class="team-focus" data-i18n="team.tonino.focus">Fashion & Luxury · CX Design · Service Innovation</div>
       </div>
     </div>
-    <div class="team-card reveal" style="transition-delay:0.5s;">
+    <div class="team-card reveal" style="transition-delay:0.6s;">
       <div class="team-photo"><img src="vincenzo-miccoli.jpg" alt="Vincenzo Miccoli"></div>
       <div class="team-info">
         <div class="team-role" data-i18n="team.vincenzo.role">Senior Manager</div>
