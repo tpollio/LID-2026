@@ -7,6 +7,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics 4 — auto-switch Staging / Production -->
+  <script>
+    const GA_IDS = {
+      prod: 'G-EGDE3TMT5T',             // LID-2026 [PROD] dd-at-lid2026.events
+      stg:  'G-NRZ32MBMT5'              // LID-2026 [STG]
+    };
+    const isProd = window.location.hostname === 'dd-at-lid2026.events';
+    const GA_ID  = isProd ? GA_IDS.prod : GA_IDS.stg;
+
+    (function(){
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      s.async = true;
+      document.head.appendChild(s);
+    })();
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
