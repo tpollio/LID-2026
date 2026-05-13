@@ -11,10 +11,10 @@
   <!-- Google Analytics 4 — auto-switch Staging / Production -->
   <script>
     const GA_IDS = {
-      prod: 'G-REPLACE_WITH_PROD_ID',   // ← inserire dopo creazione property PROD
+      prod: 'G-EGDE3TMT5T',             // LID-2026 [PROD] dd-at-lid2026.events
       stg:  'G-NRZ32MBMT5'              // LID-2026 [STG]
     };
-    const isProd = window.location.hostname === 'TODO_YOUR_PROD_DOMAIN.com';
+    const isProd = window.location.hostname === 'dd-at-lid2026.events';
     const GA_ID  = isProd ? GA_IDS.prod : GA_IDS.stg;
 
     (function(){
