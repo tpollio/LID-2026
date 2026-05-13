@@ -161,10 +161,10 @@ window.CONTENT = {
     'connect.label':              "Connect with us",
     'connect.h2':                 "Four ways to <em>connect.</em>",
     'connect.p':                  "Get our resources, explore our research or reach out to our teams — scan the QR code at our stand or click below.",
-    'connect.dl-ai.pill':         "📄 Coming soon",
+    'connect.dl-ai.pill':         "📄 Download",
     'connect.dl-ai.h3':           "The Speaker Presentation",
-    'connect.dl-ai.p':            "Slides and recording from Giacomo's session — available shortly after the event. Leave your details and we'll send you the link.",
-    'connect.dl-ai.btn':          "Notify me →",
+    'connect.dl-ai.p':            "Slides and notes from Giacomo Carozza's live session on the Agentic Customer Journey — from discovery to checkout, with working demos.",
+    'connect.dl-ai.btn':          "Get the slides →",
     'connect.dl-guide.pill':      "📖 Read",
     'connect.dl-guide.h3':        "The Agentic Customer",
     'connect.dl-guide.p':         "Your new customer isn't human. 40% of consumers already use AI agents — and nearly $1 trillion in annual spend is now influenced by them.",
@@ -179,12 +179,12 @@ window.CONTENT = {
     'connect.meet-italy.btn':     "Call me back →",
 
     // ── DOWNLOAD SPEAKER PRESENTATION (landing section)
-    'dl-ai.pill':       "📄 Coming soon · Speaker Presentation",
+    'dl-ai.pill':       "📄 Download · Speaker Presentation",
     'dl-ai.h2':         "The Speaker <em>Presentation.</em>",
-    'dl-ai.p':          "The slides and recording from Giacomo's session will be available shortly after the event. Leave your details and we'll send you the link as soon as it's live.",
-    'dl-ai.submit':     "Notify me when it's ready →",
-    'dl-ai.success.h3': "You're on the list <em>— we'll be in touch.</em>",
-    'dl-ai.success.p':  "We'll send you the link to the slides and recording as soon as they're published.",
+    'dl-ai.p':          "Leave your details and we'll send you Giacomo's slides directly — a practical walkthrough of the Agentic Customer Journey session at LID 2026.",
+    'dl-ai.submit':     "Send me the slides →",
+    'dl-ai.success.h3': "Slides on their way <em>to your inbox.</em>",
+    'dl-ai.success.p':  "Check your email — we'll also be in touch to see if we can help further.",
 
     // ── AGENTIC CUSTOMER RESEARCH (landing section)
     'dl-guide.pill':       "📖 Read · Agentic Customer",
@@ -396,10 +396,10 @@ window.CONTENT = {
     'connect.label':              "Connettiti con noi",
     'connect.h2':                 "Quattro modi per <em>connettersi.</em>",
     'connect.p':                  "Scarica le nostre risorse, esplora la nostra ricerca o entra in contatto con i nostri team — scansiona il QR code al nostro stand oppure clicca qui sotto.",
-    'connect.dl-ai.pill':         "📄 Prossimamente",
+    'connect.dl-ai.pill':         "📄 Download",
     'connect.dl-ai.h3':           "La Presentazione dello Speaker",
-    'connect.dl-ai.p':            "Slide e registrazione della sessione di Giacomo — disponibili subito dopo l'evento. Lascia i tuoi dati e ti invieremo il link.",
-    'connect.dl-ai.btn':          "Avvisami →",
+    'connect.dl-ai.p':            "Slide e note dalla sessione live di Giacomo Carozza sull'Agentic Customer Journey — dalla scoperta al checkout, con demo funzionanti.",
+    'connect.dl-ai.btn':          "Scarica le slide →",
     'connect.dl-guide.pill':      "📖 Leggi",
     'connect.dl-guide.h3':        "The Agentic Customer",
     'connect.dl-guide.p':         "Il tuo nuovo cliente non è umano. Il 40% dei consumatori usa già agenti AI — e quasi 1.000 miliardi di dollari di spesa annua ne sono influenzati.",
@@ -414,12 +414,12 @@ window.CONTENT = {
     'connect.meet-italy.btn':     "Richiamami →",
 
     // ── DOWNLOAD SPEAKER PRESENTATION (landing section)
-    'dl-ai.pill':       "📄 Prossimamente · Presentazione Speaker",
+    'dl-ai.pill':       "📄 Download · Presentazione Speaker",
     'dl-ai.h2':         "La Presentazione <em>dello Speaker.</em>",
-    'dl-ai.p':          "Le slide e la registrazione della sessione di Giacomo saranno disponibili subito dopo l'evento. Lascia i tuoi dati e ti invieremo il link non appena sarà online.",
-    'dl-ai.submit':     "Avvisami quando è pronto →",
-    'dl-ai.success.h3': "Sei nella lista <em>— ti contatteremo.</em>",
-    'dl-ai.success.p':  "Ti invieremo il link alle slide e alla registrazione non appena saranno pubblicati.",
+    'dl-ai.p':          "Lascia i tuoi dati e ti invieremo direttamente le slide di Giacomo — una guida pratica all'Agentic Customer Journey presentata al LID 2026.",
+    'dl-ai.submit':     "Inviami le slide →",
+    'dl-ai.success.h3': "Slide in arrivo <em>nella tua inbox.</em>",
+    'dl-ai.success.p':  "Controlla la tua email — ti contatteremo anche per capire come possiamo aiutarti.",
 
     // ── AGENTIC CUSTOMER RESEARCH (landing section)
     'dl-guide.pill':       "📖 Leggi · Agentic Customer",
