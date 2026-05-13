@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LID 2026 · QR Grid Print 10×10 · Deloitte Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    @page { size: A4; margin: 5mm; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #9FD235;
+      --dark:   #080808;
+      --border: #e0e0d8;
+      --muted:  #888;
+      --guide:  #b0afaa;   /* cut-guide line colour */
+      --cell:   20mm;      /* 10 × 20mm = 200mm — fits A4 with 5mm margins */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f0ec;
+      padding: 32px 24px;
+      color: var(--dark);
+    }
+
+    /* ── TOOLBAR (screen only) ── */
+    .toolbar {
+      width: 100%; max-width: 540px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 0 auto 32px;
+      display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;
+    }
+    .toolbar-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 200px; }
+    .toolbar-group label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .toolbar-group input {
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 10px 14px; font-family: 'Inter', sans-serif;
+      font-size: 13px; outline: none; transition: border-color 0.2s;
+    }
+    .toolbar-group input:focus { border-color: var(--accent); }
+    .toolbar-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .toolbar-note {
+      width: 100%; font-size: 11px; color: var(--muted);
+      border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px;
+    }
+    .btn-print {
+      background: var(--accent); color: #000;
+      border: none; border-radius: 40px;
+      padding: 0 20px; height: 42px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; cursor: pointer; white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-print:hover { opacity: 0.85; }
+
+    /* ── PRINT AREA ── */
+    .print-area {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── GRID WRAPPER (for outer tick marks) ── */
+    .qr-grid-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* ── QR GRID ── */
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(10, var(--cell));
+      grid-template-rows: repeat(10, var(--cell));
+      /* outer frame */
+      border-top:  0.4pt solid var(--guide);
+      border-left: 0.4pt solid var(--guide);
+    }
+
+    .qr-cell {
+      width:  var(--cell);
+      height: var(--cell);
+      border-right:  0.4pt solid var(--guide);
+      border-bottom: 0.4pt solid var(--guide);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    /* ── TICK MARKS ── */
+    /* 6×6 = 36 intersection points, each rendered as a small cross
+       that extends 4mm outward from the grid boundary.
+       Inner intersections are inside the grid so no tick needed there —
+       only outer-edge intersections get ticks. */
+    .tick {
+      position: absolute;
+      width: 0; height: 0;
+      pointer-events: none;
+    }
+    .tick::before {
+      content: '';
+      position: absolute;
+      width: 5mm; height: 0.4pt;
+      background: var(--guide);
+      top: -0.2pt; left: -2.5mm;
+    }
+    .tick::after {
+      content: '';
+      position: absolute;
+      width: 0.4pt; height: 5mm;
+      background: var(--guide);
+      left: -0.2pt; top: -2.5mm;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none !important; }
+      .print-area { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="toolbar-group">
+    <label>URL</label>
+    <input type="url" id="base-url"
+           value="https://staging--lid-2026.netlify.app"
+           placeholder="https://yourdomain.com">
+  </div>
+  <div class="toolbar-actions">
+    <button class="btn-print" onclick="window.print()">🖨 Print</button>
+  </div>
+  <div class="toolbar-note">
+    100 QR codes · 20 × 20 mm each · A4 · cut guides at all intersections
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="print-area">
+  <div class="qr-grid-wrap">
+    <div class="qr-grid" id="qr-grid"></div>
+    <div id="tick-layer"></div>
+  </div>
+</div>
+
+<script>
+  /* ── BUILD QR GRID ── */
+  function buildGrid(base) {
+    base = (base || '').replace(/\/$/, '').trim();
+    const url = base ? base + '#connect' : '';
+    const grid = document.getElementById('qr-grid');
+    grid.innerHTML = '';
+
+    for (let i = 0; i < 100; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'qr-cell';
+
+      if (url) {
+        new QRCode(cell, {
+          text:         url,
+          width:        52,
+          height:       52,
+          colorDark:    '#080808',
+          colorLight:   '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      }
+
+      grid.appendChild(cell);
+    }
+  }
+
+  /* ── BUILD TICK MARKS ── */
+  /* Place a cross at every outer-edge grid intersection.
+     Cell size in pixels: 1mm ≈ 3.7795px at 96 dpi.
+     We use offsetWidth/offsetHeight after render to get exact px. */
+  function buildTicks() {
+    const layer = document.getElementById('tick-layer');
+    layer.innerHTML = '';
+
+    const grid = document.getElementById('qr-grid');
+    const cellPx = grid.offsetWidth / 10;  // px per cell
+    const totalW = grid.offsetWidth;
+    const totalH = grid.offsetHeight;
+
+    for (let r = 0; r <= 10; r++) {
+      for (let c = 0; c <= 10; c++) {
+        // Only draw ticks on the outer boundary (first/last row or col)
+        if (r > 0 && r < 10 && c > 0 && c < 10) continue;
+
+        const t = document.createElement('div');
+        t.className = 'tick';
+        t.style.left = (c * cellPx) + 'px';
+        t.style.top  = (r * cellPx) + 'px';
+        layer.appendChild(t);
+      }
+    }
+
+    // Position the tick layer over the grid
+    layer.style.position = 'absolute';
+    layer.style.top  = '0';
+    layer.style.left = '0';
+    layer.style.width  = totalW + 'px';
+    layer.style.height = totalH + 'px';
+    layer.style.pointerEvents = 'none';
+  }
+
+  /* ── INIT ── */
+  const input = document.getElementById('base-url');
+
+  buildGrid(input.value);
+  // wait one frame for QRCode to render and grid to get its size
+  requestAnimationFrame(() => requestAnimationFrame(buildTicks));
+
+  input.addEventListener('input', () => {
+    buildGrid(input.value);
+    requestAnimationFrame(() => requestAnimationFrame(buildTicks));
+  });
+
+  // ?url= query param support
+  const params = new URLSearchParams(location.search);
+  if (params.get('url')) {
+    input.value = params.get('url');
+    buildGrid(params.get('url'));
+    requestAnimationFrame(() => requestAnimationFrame(buildTicks));
+  }
+</script>
+
+</body>
+</html>
